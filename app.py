@@ -191,11 +191,41 @@ components.html(
         }
     }
 
+    function removeStreamlitBranding() {
+        var pDoc = window.parent.document;
+        var selectors = [
+            'footer',
+            '[class*="viewerBadge"]',
+            '[class*="manageApp"]',
+            '[class*="ProfileButton"]',
+            '[data-testid="manage-app-button"]',
+            '#manage-app-button',
+            '[data-testid="stSidebarFooter"]',
+            '[data-testid="stHeaderActionElements"]',
+            '.stAppDeployButton',
+            '[data-testid="stStatusWidget"]'
+        ];
+        selectors.forEach(function(sel) {
+            var elements = pDoc.querySelectorAll(sel);
+            elements.forEach(function(el) {
+                el.style.display = 'none';
+                el.style.visibility = 'hidden';
+                el.style.opacity = '0';
+                el.style.pointerEvents = 'none';
+            });
+        });
+    }
+
     window.addEventListener('online', updateNetworkBadge);
     window.addEventListener('offline', updateNetworkBadge);
-    document.addEventListener('DOMContentLoaded', updateNetworkBadge);
+    document.addEventListener('DOMContentLoaded', function() {
+        updateNetworkBadge();
+        removeStreamlitBranding();
+    });
     setInterval(updateNetworkBadge, 1000);
+    setInterval(removeStreamlitBranding, 400);
     updateNetworkBadge();
+    removeStreamlitBranding();
     </script>
     """,
     height=0,
@@ -219,13 +249,18 @@ st.markdown(
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     }
 
-    /* --- Hide Streamlit Default Chrome ------------------------------ */
-    #MainMenu { display: none !important; visibility: hidden !important; }
-    footer { display: none !important; visibility: hidden !important; }
-    div[data-testid="stDecoration"] { display: none !important; }
-    div[data-testid="stStatusWidget"] { display: none !important; }
-
-    /* Hide Deploy & Dev Buttons */
+    /* --- Hide All Streamlit Default Chrome & Cloud Watermarks ------- */
+    #MainMenu,
+    footer,
+    [class*="viewerBadge"],
+    [class*="manageApp"],
+    [class*="ProfileButton"],
+    [data-testid="manage-app-button"],
+    #manage-app-button,
+    [data-testid="stSidebarFooter"],
+    [data-testid="stHeaderActionElements"],
+    [data-testid="stDecoration"],
+    [data-testid="stStatusWidget"],
     .stDeployButton,
     [data-testid="stAppDeployButton"],
     button[data-testid="stAppDeployButton"],
