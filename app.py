@@ -739,6 +739,20 @@ st.markdown(
        MOBILE RESPONSIVENESS & TOUCH OPTIMIZATIONS (@media queries)
     ================================================================ */
     @media screen and (max-width: 768px) {
+        /* Hide floating net badge on mobile so it never collides with titles */
+        #aazhi-pwa-net-badge {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        /* Hide Plotly toolbar icons completely on mobile */
+        .modebar-container,
+        .modebar,
+        .plotly .modebar {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
         /* Container Spacing */
         .block-container,
         div[data-testid="block-container"] {
@@ -1917,10 +1931,10 @@ with tab3:
             plot_bgcolor="#090e1a",
             font=dict(family="Inter, sans-serif", color="#e2e8f0"),
             showlegend=False,
-            margin=dict(t=40, b=10, l=10, r=10),
+            margin=dict(t=50, b=15, l=15, r=15),
             height=320,
         )
-        st.plotly_chart(fig_donut, use_container_width=True)
+        st.plotly_chart(fig_donut, use_container_width=True, config={'displayModeBar': False})
 
     with pcol2:
         vigor_df = pd.DataFrame({
@@ -1949,10 +1963,10 @@ with tab3:
             font=dict(family="Inter, sans-serif", color="#e2e8f0"),
             showlegend=False,
             yaxis_title="Coverage (% of Total Scene)",
-            margin=dict(t=40, b=10, l=10, r=10),
+            margin=dict(t=50, b=15, l=15, r=15),
             height=320,
         )
-        st.plotly_chart(fig_bar, use_container_width=True)
+        st.plotly_chart(fig_bar, use_container_width=True, config={'displayModeBar': False})
 
     # Multi-Spectral Polar & SAR Inundation
     rcol1, rcol2 = st.columns(2)
@@ -1990,9 +2004,9 @@ with tab3:
             title="<b>Multi-Spectral Band Reflectance Signature Profiles</b>",
             font=dict(family="Inter, sans-serif", color="#e2e8f0"),
             height=320,
-            margin=dict(t=40, b=20, l=40, r=40),
+            margin=dict(t=50, b=20, l=40, r=40),
         )
-        st.plotly_chart(fig_radar, use_container_width=True)
+        st.plotly_chart(fig_radar, use_container_width=True, config={'displayModeBar': False})
 
     with rcol2:
         sar_pct = getattr(metrics, 'sar_inundated_pct', 0.0)
@@ -2001,7 +2015,7 @@ with tab3:
             mode="gauge+number+delta",
             value=sar_pct,
             domain={'x': [0, 1], 'y': [0, 1]},
-            title={'text': f"<b>{sar_title_text}</b>", 'font': {'size': 14, 'color': '#38bdf8'}},
+            title={'text': f"<b>{sar_title_text}</b>", 'font': {'size': 13, 'color': '#38bdf8'}},
             delta={'reference': 5.0, 'increasing': {'color': "#ef4444"}},
             gauge={
                 'axis': {'range': [0, 100], 'tickcolor': "#94a3b8"},
@@ -2023,9 +2037,9 @@ with tab3:
             paper_bgcolor="#090e1a",
             font=dict(family="Inter, sans-serif", color="#e2e8f0"),
             height=320,
-            margin=dict(t=40, b=20, l=30, r=30),
+            margin=dict(t=50, b=20, l=30, r=30),
         )
-        st.plotly_chart(fig_gauge, use_container_width=True)
+        st.plotly_chart(fig_gauge, use_container_width=True, config={'displayModeBar': False})
 
     # 100% MECE Conservation Table
     st.markdown("##### 📋 Formal Pixel Conservation & Confusion Audit Matrix")
