@@ -1,0 +1,1521 @@
+{
+  "LIVE_INTERCEPT____Assam_Brahmaputra_26.18_91.74.jpg": {
+    "id": "LIVE-INTERCEPT-\ud83c\udf27\ufe0f_Assam_Brahmaputra_River_Basin",
+    "title": "Captured Satellite Scene: \ud83c\udf27\ufe0f Assam Brahmaputra River Basin",
+    "place_name": "\ud83c\udf27\ufe0f Assam Brahmaputra River Basin",
+    "sector": "\ud83c\udf27\ufe0f Assam Brahmaputra River Basin [26.18\u00b0N, 91.74\u00b0E]",
+    "category": "\ud83c\udf0a FLOOD / RIVERBANK INUNDATION",
+    "severity": "RED-ALPHA (CRITICAL)",
+    "threat_score": 0.0,
+    "coords": [
+      26.1806,
+      91.7362
+    ],
+    "bounding_box": [
+      26.1006,
+      91.6562,
+      26.260599999999997,
+      91.8162
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\LIVE_INTERCEPT____Assam_Brahmaputra_26.18_91.74.jpg",
+    "detected_utc": "2026-09-07 13:47:19 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "On-demand orbital satellite intercept targeting \ud83c\udf27\ufe0f Assam Brahmaputra River Basin for real-time LULC and hazard quantification.",
+    "affected_population_est": 0,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
+    "is_live_captured": true
+  },
+  "LIVE_INTERCEPT____Wayanad_Landslide_11.69_76.13.jpg": {
+    "id": "LIVE-INTERCEPT-\u26f0\ufe0f_Wayanad_Landslide_Slope",
+    "title": "Captured Satellite Scene: \u26f0\ufe0f Wayanad Landslide Slope",
+    "place_name": "\u26f0\ufe0f Wayanad Landslide Slope",
+    "sector": "\u26f0\ufe0f Wayanad Landslide Slope [11.69\u00b0N, 76.13\u00b0E]",
+    "category": "\u26f0\ufe0f LANDSLIDE / SLOPE DEFORMATION",
+    "severity": "RED-ALPHA (CRITICAL)",
+    "threat_score": 0.0,
+    "coords": [
+      11.6854,
+      76.132
+    ],
+    "bounding_box": [
+      11.6054,
+      76.052,
+      11.7654,
+      76.212
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\LIVE_INTERCEPT____Wayanad_Landslide_11.69_76.13.jpg",
+    "detected_utc": "2026-09-06 17:02:08 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "On-demand orbital satellite intercept targeting \u26f0\ufe0f Wayanad Landslide Slope for real-time LULC and hazard quantification.",
+    "affected_population_est": 0,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_23739_30.80_-95.00.jpg": {
+    "id": "CAPTURED-42785",
+    "title": "Captured Satellite Scene: NASA Orbital Event (EONET)",
+    "place_name": "NASA Orbital Event (EONET)",
+    "sector": "NASA Orbital Event (EONET) [30.80\u00b0N, -95.00\u00b0E]",
+    "category": "Active Satellite Intercept",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 75.0,
+    "coords": [
+      30.8,
+      -95.0
+    ],
+    "bounding_box": [
+      30.720000000000002,
+      -95.08,
+      30.88,
+      -94.92
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_23739_30.80_-95.00.jpg",
+    "detected_utc": "2026-09-05 18:36:34 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "Live satellite raster intercepted and stored in databank for NASA Orbital Event (EONET).",
+    "affected_population_est": 52000,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Maintain tactical surveillance and utilize LULC segmentation for hazard impact verification.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_23868_41.52_-117.74.jpg": {
+    "id": "NASA-EONET-EONET_23868",
+    "title": "Captured Satellite Scene: Emergency Stabilization BAER McConnell, Humboldt, Nevada",
+    "place_name": "Emergency Stabilization BAER McConnell, Humboldt, Nevada",
+    "sector": "Wildfires Event | [41.52\u00b0N, -117.74\u00b0E]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 62.0,
+    "coords": [
+      41.517567,
+      -117.74215
+    ],
+    "bounding_box": [
+      41.267567,
+      -117.99215,
+      41.767567,
+      -117.49215
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_23868_41.52_-117.74.jpg",
+    "detected_utc": "2026-09-06 16:12:40 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Emergency Stabilization BAER McConnell, Humboldt, Nevada. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "BENCHMARK___Cauvery_Delta_Ag_10.78_79.14.jpg": {
+    "id": "CAPTURED-76047",
+    "title": "Captured Satellite Scene: Benchmark   Cauvery Delta Ag 10.78 79.14",
+    "place_name": "Benchmark   Cauvery Delta Ag 10.78 79.14",
+    "sector": "Benchmark   Cauvery Delta Ag 10.78 79.14 [10.78\u00b0N, 79.14\u00b0E]",
+    "category": "Active Satellite Intercept",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 75.0,
+    "coords": [
+      10.78,
+      79.14
+    ],
+    "bounding_box": [
+      10.7,
+      79.06,
+      10.86,
+      79.22
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\BENCHMARK___Cauvery_Delta_Ag_10.78_79.14.jpg",
+    "detected_utc": "2026-09-05 19:13:24 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "Live satellite raster intercepted and stored in databank for Benchmark   Cauvery Delta Ag 10.78 79.14.",
+    "affected_population_est": 52000,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Maintain tactical surveillance and utilize LULC segmentation for hazard impact verification.",
+    "is_live_captured": true
+  },
+  "BENCHMARK____Assam_Brahmaput_26.18_91.74.jpg": {
+    "id": "CAPTURED-51770",
+    "title": "Captured Satellite Scene: Benchmark    Assam Brahmaput 26.18 91.74",
+    "place_name": "Benchmark    Assam Brahmaput 26.18 91.74",
+    "sector": "Benchmark    Assam Brahmaput 26.18 91.74 [26.18\u00b0N, 91.74\u00b0E]",
+    "category": "Active Satellite Intercept",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 75.0,
+    "coords": [
+      26.18,
+      91.74
+    ],
+    "bounding_box": [
+      26.1,
+      91.66,
+      26.259999999999998,
+      91.82
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\BENCHMARK____Assam_Brahmaput_26.18_91.74.jpg",
+    "detected_utc": "2026-09-05 19:14:14 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "Live satellite raster intercepted and stored in databank for Benchmark    Assam Brahmaput 26.18 91.74.",
+    "affected_population_est": 52000,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Maintain tactical surveillance and utilize LULC segmentation for hazard impact verification.",
+    "is_live_captured": true
+  },
+  "BENCHMARK___Visakhapatnam_De_17.69_83.22.jpg": {
+    "id": "CAPTURED-81410",
+    "title": "Captured Satellite Scene: Benchmark   Visakhapatnam De 17.69 83.22",
+    "place_name": "Benchmark   Visakhapatnam De 17.69 83.22",
+    "sector": "Benchmark   Visakhapatnam De 17.69 83.22 [17.69\u00b0N, 83.22\u00b0E]",
+    "category": "Active Satellite Intercept",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 75.0,
+    "coords": [
+      17.69,
+      83.22
+    ],
+    "bounding_box": [
+      17.610000000000003,
+      83.14,
+      17.77,
+      83.3
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\BENCHMARK___Visakhapatnam_De_17.69_83.22.jpg",
+    "detected_utc": "2026-09-05 19:16:01 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "Live satellite raster intercepted and stored in databank for Benchmark   Visakhapatnam De 17.69 83.22.",
+    "affected_population_est": 52000,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Maintain tactical surveillance and utilize LULC segmentation for hazard impact verification.",
+    "is_live_captured": true
+  },
+  "BENCHMARK___Sundarbans_Mangr_21.95_89.18.jpg": {
+    "id": "CAPTURED-78723",
+    "title": "Captured Satellite Scene: Benchmark   Sundarbans Mangr 21.95 89.18",
+    "place_name": "Benchmark   Sundarbans Mangr 21.95 89.18",
+    "sector": "Benchmark   Sundarbans Mangr 21.95 89.18 [21.95\u00b0N, 89.18\u00b0E]",
+    "category": "Active Satellite Intercept",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 75.0,
+    "coords": [
+      21.95,
+      89.18
+    ],
+    "bounding_box": [
+      21.87,
+      89.10000000000001,
+      22.029999999999998,
+      89.26
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\BENCHMARK___Sundarbans_Mangr_21.95_89.18.jpg",
+    "detected_utc": "2026-09-05 19:28:40 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "Live satellite raster intercepted and stored in databank for Benchmark   Sundarbans Mangr 21.95 89.18.",
+    "affected_population_est": 52000,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Maintain tactical surveillance and utilize LULC segmentation for hazard impact verification.",
+    "is_live_captured": true
+  },
+  "BENCHMARK____Thar_Desert_Sol_27.53_71.92.jpg": {
+    "id": "CAPTURED-36388",
+    "title": "Captured Satellite Scene: Benchmark    Thar Desert Sol 27.53 71.92",
+    "place_name": "Benchmark    Thar Desert Sol 27.53 71.92",
+    "sector": "Benchmark    Thar Desert Sol 27.53 71.92 [27.53\u00b0N, 71.92\u00b0E]",
+    "category": "Thermal Anomaly / Arid Zone",
+    "severity": "YELLOW-CHARLIE (WATCH)",
+    "threat_score": 58.0,
+    "coords": [
+      27.53,
+      71.92
+    ],
+    "bounding_box": [
+      27.450000000000003,
+      71.84,
+      27.61,
+      72.0
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\BENCHMARK____Thar_Desert_Sol_27.53_71.92.jpg",
+    "detected_utc": "2026-09-05 19:29:09 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "Live satellite raster intercepted and stored in databank for Benchmark    Thar Desert Sol 27.53 71.92.",
+    "affected_population_est": 52000,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Maintain tactical surveillance and utilize LULC segmentation for hazard impact verification.",
+    "is_live_captured": true
+  },
+  "LIVE_INTERCEPT____Custom_Manual_Lat_12.97_77.59.jpg": {
+    "id": "LIVE-INTERCEPT-\u270f\ufe0f_Custom_Manual_Latitude_&_Longitude...",
+    "title": "Captured Satellite Scene: \u270f\ufe0f Custom Manual Latitude & Longitude...",
+    "place_name": "\u270f\ufe0f Custom Manual Latitude & Longitude...",
+    "sector": "\u270f\ufe0f Custom Manual Latitude & Longitude... [12.97\u00b0N, 77.59\u00b0E]",
+    "category": "\u26a0\ufe0f CUSTOM GEOSPATIAL TARGET",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 0.0,
+    "coords": [
+      12.9716,
+      77.5946
+    ],
+    "bounding_box": [
+      12.8916,
+      77.5146,
+      13.0516,
+      77.6746
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\LIVE_INTERCEPT____Custom_Manual_Lat_12.97_77.59.jpg",
+    "detected_utc": "2026-09-06 11:15:30 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "On-demand orbital satellite intercept targeting \u270f\ufe0f Custom Manual Latitude & Longitude... for real-time LULC and hazard quantification.",
+    "affected_population_est": 0,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_23869_46.65_-104.83.jpg": {
+    "id": "NASA-EONET-EONET_23869",
+    "title": "Captured Satellite Scene: Wildfire Ayers Pond, Prairie, Montana",
+    "place_name": "Wildfire Ayers Pond, Prairie, Montana",
+    "sector": "Wildfires Event | [46.65\u00b0N, -104.83\u00b0E]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 57.0,
+    "coords": [
+      46.65069,
+      -104.83045
+    ],
+    "bounding_box": [
+      46.40069,
+      -105.08045,
+      46.90069,
+      -104.58045
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_23869_46.65_-104.83.jpg",
+    "detected_utc": "2026-09-05 20:51:44 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire Ayers Pond, Prairie, Montana. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_23870_46.49_-105.19.jpg": {
+    "id": "NASA-EONET-EONET_23870",
+    "title": "Captured Satellite Scene: Wildfire Snow, Custer, Montana",
+    "place_name": "Wildfire Snow, Custer, Montana",
+    "sector": "Wildfires Event | [46.49\u00b0N, -105.19\u00b0E]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 62.0,
+    "coords": [
+      46.48575,
+      -105.185017
+    ],
+    "bounding_box": [
+      46.23575,
+      -105.435017,
+      46.73575,
+      -104.935017
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_23870_46.49_-105.19.jpg",
+    "detected_utc": "2026-09-05 20:51:44 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire Snow, Custer, Montana. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_23219_42.96_-113.85.jpg": {
+    "id": "NASA-EONET-EONET_23219",
+    "title": "Captured Satellite Scene: Wildfire Shale Butte, Lincoln, Idaho",
+    "place_name": "Wildfire Shale Butte, Lincoln, Idaho",
+    "sector": "Wildfires Event | [42.96\u00b0N, -113.85\u00b0E]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 57.0,
+    "coords": [
+      42.961617,
+      -113.8483
+    ],
+    "bounding_box": [
+      42.711617,
+      -114.0983,
+      43.211617,
+      -113.5983
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_23219_42.96_-113.85.jpg",
+    "detected_utc": "2026-09-06 06:29:16 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire Shale Butte, Lincoln, Idaho. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "temp_map_overlay.png": {
+    "id": "CAPTURED-60787",
+    "title": "Captured Satellite Scene: Temp Map Overlay",
+    "place_name": "Temp Map Overlay",
+    "sector": "Temp Map Overlay [20.59\u00b0N, 78.96\u00b0E]",
+    "category": "Active Satellite Intercept",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 75.0,
+    "coords": [
+      20.5937,
+      78.9629
+    ],
+    "bounding_box": [
+      20.5137,
+      78.8829,
+      20.673699999999997,
+      79.0429
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\temp_map_overlay.png",
+    "detected_utc": "2026-09-06 07:29:23 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "Live satellite raster intercepted and stored in databank for Temp Map Overlay.",
+    "affected_population_est": 52000,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Maintain tactical surveillance and utilize LULC segmentation for hazard impact verification.",
+    "is_live_captured": true
+  },
+  "LIVE_INTERCEPT____Assam_Brahmaputra_26.19_91.74.jpg": {
+    "id": "LIVE-INTERCEPT-\ud83c\udf27\ufe0f_Assam_Brahmaputra_River_Basin",
+    "title": "Captured Satellite Scene: \ud83c\udf27\ufe0f Assam Brahmaputra River Basin",
+    "place_name": "\ud83c\udf27\ufe0f Assam Brahmaputra River Basin",
+    "sector": "\ud83c\udf27\ufe0f Assam Brahmaputra River Basin [26.19\u00b0N, 91.74\u00b0E]",
+    "category": "\ud83c\udf0a FLOOD / RIVERBANK INUNDATION",
+    "severity": "RED-ALPHA (CRITICAL)",
+    "threat_score": 0.0,
+    "coords": [
+      26.19,
+      91.7362
+    ],
+    "bounding_box": [
+      26.110000000000003,
+      91.6562,
+      26.27,
+      91.8162
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\LIVE_INTERCEPT____Assam_Brahmaputra_26.19_91.74.jpg",
+    "detected_utc": "2026-09-06 10:55:34 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "On-demand orbital satellite intercept targeting \ud83c\udf27\ufe0f Assam Brahmaputra River Basin for real-time LULC and hazard quantification.",
+    "affected_population_est": 0,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
+    "is_live_captured": true
+  },
+  "LIVE_INTERCEPT____Assam_Brahmaputra_26.19_91.75.jpg": {
+    "id": "LIVE-INTERCEPT-\ud83c\udf27\ufe0f_Assam_Brahmaputra_River_Basin",
+    "title": "Captured Satellite Scene: \ud83c\udf27\ufe0f Assam Brahmaputra River Basin",
+    "place_name": "\ud83c\udf27\ufe0f Assam Brahmaputra River Basin",
+    "sector": "\ud83c\udf27\ufe0f Assam Brahmaputra River Basin [26.19\u00b0N, 91.75\u00b0E]",
+    "category": "\ud83c\udf0a FLOOD / RIVERBANK INUNDATION",
+    "severity": "RED-ALPHA (CRITICAL)",
+    "threat_score": 0.0,
+    "coords": [
+      26.19,
+      91.75
+    ],
+    "bounding_box": [
+      26.110000000000003,
+      91.67,
+      26.27,
+      91.83
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\LIVE_INTERCEPT____Assam_Brahmaputra_26.19_91.75.jpg",
+    "detected_utc": "2026-09-06 10:55:54 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "On-demand orbital satellite intercept targeting \ud83c\udf27\ufe0f Assam Brahmaputra River Basin for real-time LULC and hazard quantification.",
+    "affected_population_est": 0,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
+    "is_live_captured": true
+  },
+  "LIVE_INTERCEPT____Assam_Brahmaputra_30.50_91.75.jpg": {
+    "id": "LIVE-INTERCEPT-\ud83c\udf27\ufe0f_Assam_Brahmaputra_River_Basin",
+    "title": "Captured Satellite Scene: \ud83c\udf27\ufe0f Assam Brahmaputra River Basin",
+    "place_name": "\ud83c\udf27\ufe0f Assam Brahmaputra River Basin",
+    "sector": "\ud83c\udf27\ufe0f Assam Brahmaputra River Basin [30.50\u00b0N, 91.75\u00b0E]",
+    "category": "\ud83c\udf0a FLOOD / RIVERBANK INUNDATION",
+    "severity": "RED-ALPHA (CRITICAL)",
+    "threat_score": 0.0,
+    "coords": [
+      30.5,
+      91.75
+    ],
+    "bounding_box": [
+      30.42,
+      91.67,
+      30.58,
+      91.83
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\LIVE_INTERCEPT____Assam_Brahmaputra_30.50_91.75.jpg",
+    "detected_utc": "2026-09-06 10:56:14 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "On-demand orbital satellite intercept targeting \ud83c\udf27\ufe0f Assam Brahmaputra River Basin for real-time LULC and hazard quantification.",
+    "affected_population_est": 0,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
+    "is_live_captured": true
+  },
+  "LIVE_INTERCEPT____Custom_Manual_Lat_50.50_77.59.jpg": {
+    "id": "LIVE-INTERCEPT-\u270f\ufe0f_Custom_Manual_Latitude_&_Longitude...",
+    "title": "Captured Satellite Scene: \u270f\ufe0f Custom Manual Latitude & Longitude...",
+    "place_name": "\u270f\ufe0f Custom Manual Latitude & Longitude...",
+    "sector": "\u270f\ufe0f Custom Manual Latitude & Longitude... [50.50\u00b0N, 77.59\u00b0E]",
+    "category": "\u26a0\ufe0f CUSTOM GEOSPATIAL TARGET",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 0.0,
+    "coords": [
+      50.5,
+      77.5946
+    ],
+    "bounding_box": [
+      50.42,
+      77.5146,
+      50.58,
+      77.6746
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\LIVE_INTERCEPT____Custom_Manual_Lat_50.50_77.59.jpg",
+    "detected_utc": "2026-09-06 10:57:39 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "On-demand orbital satellite intercept targeting \u270f\ufe0f Custom Manual Latitude & Longitude... for real-time LULC and hazard quantification.",
+    "affected_population_est": 0,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
+    "is_live_captured": true
+  },
+  "LIVE_INTERCEPT____Assam_Brahmaputra_50.00_91.74.jpg": {
+    "id": "LIVE-INTERCEPT-\ud83c\udf27\ufe0f_Assam_Brahmaputra_River_Basin",
+    "title": "Captured Satellite Scene: \ud83c\udf27\ufe0f Assam Brahmaputra River Basin",
+    "place_name": "\ud83c\udf27\ufe0f Assam Brahmaputra River Basin",
+    "sector": "\ud83c\udf27\ufe0f Assam Brahmaputra River Basin [50.00\u00b0N, 91.74\u00b0E]",
+    "category": "\ud83c\udf0a FLOOD / RIVERBANK INUNDATION",
+    "severity": "RED-ALPHA (CRITICAL)",
+    "threat_score": 0.0,
+    "coords": [
+      50.0,
+      91.7362
+    ],
+    "bounding_box": [
+      49.92,
+      91.6562,
+      50.08,
+      91.8162
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\LIVE_INTERCEPT____Assam_Brahmaputra_50.00_91.74.jpg",
+    "detected_utc": "2026-09-06 11:13:20 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "On-demand orbital satellite intercept targeting \ud83c\udf27\ufe0f Assam Brahmaputra River Basin for real-time LULC and hazard quantification.",
+    "affected_population_est": 0,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
+    "is_live_captured": true
+  },
+  "LIVE_INTERCEPT____Assam_Brahmaputra_100.00_91.74.jpg": {
+    "id": "LIVE-INTERCEPT-\ud83c\udf27\ufe0f_Assam_Brahmaputra_River_Basin",
+    "title": "Captured Satellite Scene: \ud83c\udf27\ufe0f Assam Brahmaputra River Basin",
+    "place_name": "\ud83c\udf27\ufe0f Assam Brahmaputra River Basin",
+    "sector": "\ud83c\udf27\ufe0f Assam Brahmaputra River Basin [100.00\u00b0N, 91.74\u00b0E]",
+    "category": "\ud83c\udf0a FLOOD / RIVERBANK INUNDATION",
+    "severity": "RED-ALPHA (CRITICAL)",
+    "threat_score": 0.0,
+    "coords": [
+      100.0,
+      91.7362
+    ],
+    "bounding_box": [
+      99.92,
+      91.6562,
+      100.08,
+      91.8162
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\LIVE_INTERCEPT____Assam_Brahmaputra_100.00_91.74.jpg",
+    "detected_utc": "2026-09-06 11:13:48 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "On-demand orbital satellite intercept targeting \ud83c\udf27\ufe0f Assam Brahmaputra River Basin for real-time LULC and hazard quantification.",
+    "affected_population_est": 0,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
+    "is_live_captured": true
+  },
+  "LIVE_INTERCEPT____Assam_Brahmaputra_100.00_50.00.jpg": {
+    "id": "LIVE-INTERCEPT-\ud83c\udf27\ufe0f_Assam_Brahmaputra_River_Basin",
+    "title": "Captured Satellite Scene: \ud83c\udf27\ufe0f Assam Brahmaputra River Basin",
+    "place_name": "\ud83c\udf27\ufe0f Assam Brahmaputra River Basin",
+    "sector": "\ud83c\udf27\ufe0f Assam Brahmaputra River Basin [100.00\u00b0N, 50.00\u00b0E]",
+    "category": "\ud83c\udf0a FLOOD / RIVERBANK INUNDATION",
+    "severity": "RED-ALPHA (CRITICAL)",
+    "threat_score": 0.0,
+    "coords": [
+      100.0,
+      50.0
+    ],
+    "bounding_box": [
+      99.92,
+      49.92,
+      100.08,
+      50.08
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\LIVE_INTERCEPT____Assam_Brahmaputra_100.00_50.00.jpg",
+    "detected_utc": "2026-09-06 11:13:59 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "On-demand orbital satellite intercept targeting \ud83c\udf27\ufe0f Assam Brahmaputra River Basin for real-time LULC and hazard quantification.",
+    "affected_population_est": 0,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
+    "is_live_captured": true
+  },
+  "LIVE_INTERCEPT____Assam_Brahmaputra_100.00_27.00.jpg": {
+    "id": "LIVE-INTERCEPT-\ud83c\udf27\ufe0f_Assam_Brahmaputra_River_Basin",
+    "title": "Captured Satellite Scene: \ud83c\udf27\ufe0f Assam Brahmaputra River Basin",
+    "place_name": "\ud83c\udf27\ufe0f Assam Brahmaputra River Basin",
+    "sector": "\ud83c\udf27\ufe0f Assam Brahmaputra River Basin [100.00\u00b0N, 27.00\u00b0E]",
+    "category": "\ud83c\udf0a FLOOD / RIVERBANK INUNDATION",
+    "severity": "RED-ALPHA (CRITICAL)",
+    "threat_score": 0.0,
+    "coords": [
+      100.0,
+      27.0
+    ],
+    "bounding_box": [
+      99.92,
+      26.92,
+      100.08,
+      27.08
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\LIVE_INTERCEPT____Assam_Brahmaputra_100.00_27.00.jpg",
+    "detected_utc": "2026-09-06 11:14:13 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "On-demand orbital satellite intercept targeting \ud83c\udf27\ufe0f Assam Brahmaputra River Basin for real-time LULC and hazard quantification.",
+    "affected_population_est": 0,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
+    "is_live_captured": true
+  },
+  "LIVE_INTERCEPT____Assam_Brahmaputra_28.00_27.00.jpg": {
+    "id": "LIVE-INTERCEPT-\ud83c\udf27\ufe0f_Assam_Brahmaputra_River_Basin",
+    "title": "Captured Satellite Scene: \ud83c\udf27\ufe0f Assam Brahmaputra River Basin",
+    "place_name": "\ud83c\udf27\ufe0f Assam Brahmaputra River Basin",
+    "sector": "\ud83c\udf27\ufe0f Assam Brahmaputra River Basin [28.00\u00b0N, 27.00\u00b0E]",
+    "category": "\ud83c\udf0a FLOOD / RIVERBANK INUNDATION",
+    "severity": "RED-ALPHA (CRITICAL)",
+    "threat_score": 0.0,
+    "coords": [
+      28.0,
+      27.0
+    ],
+    "bounding_box": [
+      27.92,
+      26.92,
+      28.08,
+      27.08
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\LIVE_INTERCEPT____Assam_Brahmaputra_28.00_27.00.jpg",
+    "detected_utc": "2026-09-06 11:14:24 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "On-demand orbital satellite intercept targeting \ud83c\udf27\ufe0f Assam Brahmaputra River Basin for real-time LULC and hazard quantification.",
+    "affected_population_est": 0,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
+    "is_live_captured": true
+  },
+  "LIVE_INTERCEPT_Custom_Coordinate_In_50.00_91.74.jpg": {
+    "id": "LIVE-INTERCEPT-Custom_Coordinate_Intercept",
+    "title": "Captured Satellite Scene: Custom Coordinate Intercept",
+    "place_name": "Custom Coordinate Intercept",
+    "sector": "Custom Coordinate Intercept [50.00\u00b0N, 91.74\u00b0E]",
+    "category": "\ud83c\udfaf CUSTOM GEOSPATIAL TARGET",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 0.0,
+    "coords": [
+      50.0,
+      91.7362
+    ],
+    "bounding_box": [
+      49.92,
+      91.6562,
+      50.08,
+      91.8162
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\LIVE_INTERCEPT_Custom_Coordinate_In_50.00_91.74.jpg",
+    "detected_utc": "2026-09-06 11:39:15 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "On-demand orbital satellite intercept targeting Custom Coordinate Intercept for real-time LULC and hazard quantification.",
+    "affected_population_est": 0,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
+    "is_live_captured": true
+  },
+  "LIVE_INTERCEPT___Chennai_Coastal_Fl_13.08_80.27.jpg": {
+    "id": "LIVE-INTERCEPT-\ud83c\udf0a_Chennai_Coastal_Floodplain",
+    "title": "Captured Satellite Scene: \ud83c\udf0a Chennai Coastal Floodplain",
+    "place_name": "\ud83c\udf0a Chennai Coastal Floodplain",
+    "sector": "\ud83c\udf0a Chennai Coastal Floodplain [13.08\u00b0N, 80.27\u00b0E]",
+    "category": "\ud83c\udf0a FLOOD / COASTAL INUNDATION",
+    "severity": "RED-ALPHA (CRITICAL)",
+    "threat_score": 0.0,
+    "coords": [
+      13.0827,
+      80.2707
+    ],
+    "bounding_box": [
+      13.0027,
+      80.1907,
+      13.162700000000001,
+      80.3507
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\LIVE_INTERCEPT___Chennai_Coastal_Fl_13.08_80.27.jpg",
+    "detected_utc": "2026-09-06 17:02:22 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "On-demand orbital satellite intercept targeting \ud83c\udf0a Chennai Coastal Floodplain for real-time LULC and hazard quantification.",
+    "affected_population_est": 0,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
+    "is_live_captured": true
+  },
+  "LIVE_INTERCEPT_\u0422\u04af\u0440\u0433\u044d\u043d_\u1832\u1826\u1837\u182d\u1821\u1828__\u0423\u0432\u0441_\u1824_50.00_91.74.jpg": {
+    "id": "LIVE-INTERCEPT-\u0422\u04af\u0440\u0433\u044d\u043d_\u1832\u1826\u1837\u182d\u1821\u1828,_\u0423\u0432\u0441_\u1824\u182a\u1830\u1824,_\u041c\u043e\u043d\u0433\u043e\u043b_\u0443\u043b\u0441_\u182e\u1824\u1829\u182d\u1824\u182f_\u1824\u182f\u1824\u1830",
+    "title": "Captured Satellite Scene: \u0422\u04af\u0440\u0433\u044d\u043d \u1832\u1826\u1837\u182d\u1821\u1828, \u0423\u0432\u0441 \u1824\u182a\u1830\u1824, \u041c\u043e\u043d\u0433\u043e\u043b \u0443\u043b\u0441 \u182e\u1824\u1829\u182d\u1824\u182f \u1824\u182f\u1824\u1830",
+    "place_name": "\u0422\u04af\u0440\u0433\u044d\u043d \u1832\u1826\u1837\u182d\u1821\u1828, \u0423\u0432\u0441 \u1824\u182a\u1830\u1824, \u041c\u043e\u043d\u0433\u043e\u043b \u0443\u043b\u0441 \u182e\u1824\u1829\u182d\u1824\u182f \u1824\u182f\u1824\u1830",
+    "sector": "\u0422\u04af\u0440\u0433\u044d\u043d \u1832\u1826\u1837\u182d\u1821\u1828, \u0423\u0432\u0441 \u1824\u182a\u1830\u1824, \u041c\u043e\u043d\u0433\u043e\u043b \u0443\u043b\u0441 \u182e\u1824\u1829\u182d\u1824\u182f \u1824\u182f\u1824\u1830 [50.00\u00b0N, 91.74\u00b0E]",
+    "category": "\ud83c\udfaf MULTI-HAZARD GEOSPATIAL TARGET",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 0.0,
+    "coords": [
+      50.0,
+      91.7362
+    ],
+    "bounding_box": [
+      49.92,
+      91.6562,
+      50.08,
+      91.8162
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\LIVE_INTERCEPT_\u0422\u04af\u0440\u0433\u044d\u043d_\u1832\u1826\u1837\u182d\u1821\u1828__\u0423\u0432\u0441_\u1824_50.00_91.74.jpg",
+    "detected_utc": "2026-09-06 12:47:39 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "On-demand orbital satellite intercept targeting \u0422\u04af\u0440\u0433\u044d\u043d \u1832\u1826\u1837\u182d\u1821\u1828, \u0423\u0432\u0441 \u1824\u182a\u1830\u1824, \u041c\u043e\u043d\u0433\u043e\u043b \u0443\u043b\u0441 \u182e\u1824\u1829\u182d\u1824\u182f \u1824\u182f\u1824\u1830 for real-time LULC and hazard quantification.",
+    "affected_population_est": 0,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
+    "is_live_captured": true
+  },
+  "LIVE_INTERCEPT_\u0414\u0437\u0443\u043d_\u0425\u0435\u043c\u0447\u0438\u043a\u0441\u043a\u0438\u0439_\u043a\u043e\u0436\u0443_51.00_91.74.jpg": {
+    "id": "LIVE-INTERCEPT-\u0414\u0437\u0443\u043d-\u0425\u0435\u043c\u0447\u0438\u043a\u0441\u043a\u0438\u0439_\u043a\u043e\u0436\u0443\u0443\u043d,_\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430_\u0422\u044b\u0432\u0430,_\u0420\u043e\u0441\u0441\u0438\u044f",
+    "title": "Captured Satellite Scene: \u0414\u0437\u0443\u043d-\u0425\u0435\u043c\u0447\u0438\u043a\u0441\u043a\u0438\u0439 \u043a\u043e\u0436\u0443\u0443\u043d, \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u0422\u044b\u0432\u0430, \u0420\u043e\u0441\u0441\u0438\u044f",
+    "place_name": "\u0414\u0437\u0443\u043d-\u0425\u0435\u043c\u0447\u0438\u043a\u0441\u043a\u0438\u0439 \u043a\u043e\u0436\u0443\u0443\u043d, \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u0422\u044b\u0432\u0430, \u0420\u043e\u0441\u0441\u0438\u044f",
+    "sector": "\u0414\u0437\u0443\u043d-\u0425\u0435\u043c\u0447\u0438\u043a\u0441\u043a\u0438\u0439 \u043a\u043e\u0436\u0443\u0443\u043d, \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u0422\u044b\u0432\u0430, \u0420\u043e\u0441\u0441\u0438\u044f [51.00\u00b0N, 91.74\u00b0E]",
+    "category": "\ud83c\udfaf MULTI-HAZARD GEOSPATIAL TARGET",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 0.0,
+    "coords": [
+      51.0,
+      91.7362
+    ],
+    "bounding_box": [
+      50.92,
+      91.6562,
+      51.08,
+      91.8162
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\LIVE_INTERCEPT_\u0414\u0437\u0443\u043d_\u0425\u0435\u043c\u0447\u0438\u043a\u0441\u043a\u0438\u0439_\u043a\u043e\u0436\u0443_51.00_91.74.jpg",
+    "detected_utc": "2026-09-06 11:53:53 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "On-demand orbital satellite intercept targeting \u0414\u0437\u0443\u043d-\u0425\u0435\u043c\u0447\u0438\u043a\u0441\u043a\u0438\u0439 \u043a\u043e\u0436\u0443\u0443\u043d, \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u0422\u044b\u0432\u0430, \u0420\u043e\u0441\u0441\u0438\u044f for real-time LULC and hazard quantification.",
+    "affected_population_est": 0,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_23466_36.52_-104.45.jpg": {
+    "id": "NASA-EONET-EONET_23466",
+    "title": "Captured Satellite Scene: Wildfire LAUGHLIN, Colfax, New Mexico",
+    "place_name": "Wildfire LAUGHLIN, Colfax, New Mexico",
+    "sector": "Wildfires Event | [36.52\u00b0N, 104.45\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 71.0,
+    "coords": [
+      36.5230556,
+      -104.4530556
+    ],
+    "bounding_box": [
+      36.2730556,
+      -104.7030556,
+      36.7730556,
+      -104.2030556
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_23466_36.52_-104.45.jpg",
+    "detected_utc": "2026-09-06 16:26:43 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire LAUGHLIN, Colfax, New Mexico. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_23209_35.46_-101.22.jpg": {
+    "id": "NASA-EONET-EONET_23209",
+    "title": "Captured Satellite Scene: Wildfire Old Deer, Carson, Texas",
+    "place_name": "Wildfire Old Deer, Carson, Texas",
+    "sector": "Wildfires Event | [35.46\u00b0N, 101.22\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 62.0,
+    "coords": [
+      35.4635,
+      -101.217
+    ],
+    "bounding_box": [
+      35.2135,
+      -101.467,
+      35.7135,
+      -100.967
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_23209_35.46_-101.22.jpg",
+    "detected_utc": "2026-09-06 16:39:35 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire Old Deer, Carson, Texas. Real-time orbital monitoring active.",
+    "affected_population_est": 1255,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_23683_35.53_-104.30.jpg": {
+    "id": "NASA-EONET-EONET_23683",
+    "title": "Captured Satellite Scene: Wildfire 4V, San Miguel, New Mexico",
+    "place_name": "Wildfire 4V, San Miguel, New Mexico",
+    "sector": "Wildfires Event | [35.53\u00b0N, 104.30\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 61.0,
+    "coords": [
+      35.535,
+      -104.295
+    ],
+    "bounding_box": [
+      35.285,
+      -104.545,
+      35.785,
+      -104.045
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_23683_35.53_-104.30.jpg",
+    "detected_utc": "2026-09-06 16:39:35 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire 4V, San Miguel, New Mexico. Real-time orbital monitoring active.",
+    "affected_population_est": 2147,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_23871_34.48_-95.30.jpg": {
+    "id": "NASA-EONET-EONET_23871",
+    "title": "Captured Satellite Scene: Wildfire Alexander Trail, Pushmataha, Oklahoma",
+    "place_name": "Wildfire Alexander Trail, Pushmataha, Oklahoma",
+    "sector": "Wildfires Event | [34.48\u00b0N, 95.30\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 65.0,
+    "coords": [
+      34.4777778,
+      -95.2966667
+    ],
+    "bounding_box": [
+      34.2277778,
+      -95.5466667,
+      34.7277778,
+      -95.0466667
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_23871_34.48_-95.30.jpg",
+    "detected_utc": "2026-09-07 13:39:07 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire Alexander Trail, Pushmataha, Oklahoma. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_22425_46.54_-118.09.jpg": {
+    "id": "NASA-EONET-EONET_22425",
+    "title": "Captured Satellite Scene: Wildfire LITTLE GOOSE, Columbia, Washington",
+    "place_name": "Wildfire LITTLE GOOSE, Columbia, Washington",
+    "sector": "Wildfires Event | [46.54\u00b0N, 118.09\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 61.0,
+    "coords": [
+      46.536,
+      -118.09
+    ],
+    "bounding_box": [
+      46.286,
+      -118.34,
+      46.786,
+      -117.84
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_22425_46.54_-118.09.jpg",
+    "detected_utc": "2026-09-06 16:56:49 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire LITTLE GOOSE, Columbia, Washington. Real-time orbital monitoring active.",
+    "affected_population_est": 2049,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "LIVE_INTERCEPT___Cauvery_Delta_Agro_10.78_79.14.jpg": {
+    "id": "LIVE-INTERCEPT-\ud83c\udf3e_Cauvery_Delta_Agro-Basin",
+    "title": "Captured Satellite Scene: \ud83c\udf3e Cauvery Delta Agro-Basin",
+    "place_name": "\ud83c\udf3e Cauvery Delta Agro-Basin",
+    "sector": "\ud83c\udf3e Cauvery Delta Agro-Basin [10.78\u00b0N, 79.14\u00b0E]",
+    "category": "\ud83c\udf3e AGRO-DROUGHT / MOISTURE DEFICIT",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 0.0,
+    "coords": [
+      10.7828,
+      79.1378
+    ],
+    "bounding_box": [
+      10.7028,
+      79.0578,
+      10.8628,
+      79.2178
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\LIVE_INTERCEPT___Cauvery_Delta_Agro_10.78_79.14.jpg",
+    "detected_utc": "2026-09-07 13:47:35 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "On-demand orbital satellite intercept targeting \ud83c\udf3e Cauvery Delta Agro-Basin for real-time LULC and hazard quantification.",
+    "affected_population_est": 0,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_23684_48.55_-121.03.jpg": {
+    "id": "NASA-EONET-EONET_23684",
+    "title": "Captured Satellite Scene: Wildfire Thunder Creek, Skagit, Washington",
+    "place_name": "Wildfire Thunder Creek, Skagit, Washington",
+    "sector": "Wildfires Event | [48.55\u00b0N, 121.03\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 59.0,
+    "coords": [
+      48.549617,
+      -121.0287
+    ],
+    "bounding_box": [
+      48.299617,
+      -121.2787,
+      48.799617,
+      -120.7787
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_23684_48.55_-121.03.jpg",
+    "detected_utc": "2026-09-06 17:29:16 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire Thunder Creek, Skagit, Washington. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_21331_40.15_-112.56.jpg": {
+    "id": "NASA-EONET-EONET_21331",
+    "title": "Captured Satellite Scene: Wildfire Stookey, Tooele, Utah",
+    "place_name": "Wildfire Stookey, Tooele, Utah",
+    "sector": "Wildfires Event | [40.15\u00b0N, 112.56\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 63.0,
+    "coords": [
+      40.1499,
+      -112.560267
+    ],
+    "bounding_box": [
+      39.8999,
+      -112.810267,
+      40.3999,
+      -112.310267
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_21331_40.15_-112.56.jpg",
+    "detected_utc": "2026-09-06 17:29:16 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire Stookey, Tooele, Utah. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_21238_45.38_-95.50.jpg": {
+    "id": "NASA-EONET-EONET_21238",
+    "title": "Captured Satellite Scene: Prescribed Fire RX Loen, Swift, Minnesota",
+    "place_name": "Prescribed Fire RX Loen, Swift, Minnesota",
+    "sector": "Wildfires Event | [45.38\u00b0N, 95.50\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 61.0,
+    "coords": [
+      45.38,
+      -95.5
+    ],
+    "bounding_box": [
+      45.13,
+      -95.75,
+      45.63,
+      -95.25
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_21238_45.38_-95.50.jpg",
+    "detected_utc": "2026-09-06 19:02:30 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Prescribed Fire RX Loen, Swift, Minnesota. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_22927_31.15_-100.48.jpg": {
+    "id": "NASA-EONET-EONET_22927",
+    "title": "Captured Satellite Scene: Prescribed Fire RX Tom Green 7105, Tom Green, Texas",
+    "place_name": "Prescribed Fire RX Tom Green 7105, Tom Green, Texas",
+    "sector": "Wildfires Event | [31.15\u00b0N, 100.48\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 57.0,
+    "coords": [
+      31.14888889,
+      -100.4783333
+    ],
+    "bounding_box": [
+      30.89888889,
+      -100.7283333,
+      31.39888889,
+      -100.2283333
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_22927_31.15_-100.48.jpg",
+    "detected_utc": "2026-09-06 18:20:32 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Prescribed Fire RX Tom Green 7105, Tom Green, Texas. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_23680_48.63_-116.66.jpg": {
+    "id": "NASA-EONET-EONET_23680",
+    "title": "Captured Satellite Scene: Wildfire Silver, Boundary, Idaho",
+    "place_name": "Wildfire Silver, Boundary, Idaho",
+    "sector": "Wildfires Event | [48.63\u00b0N, 116.66\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 57.0,
+    "coords": [
+      48.628867,
+      -116.660283
+    ],
+    "bounding_box": [
+      48.378867,
+      -116.910283,
+      48.878867,
+      -116.410283
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_23680_48.63_-116.66.jpg",
+    "detected_utc": "2026-09-06 18:43:05 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire Silver, Boundary, Idaho. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_21386_48.16_-91.10.jpg": {
+    "id": "NASA-EONET-EONET_21386",
+    "title": "Captured Satellite Scene: Wildfire Little Knife, Lake, Minnesota",
+    "place_name": "Wildfire Little Knife, Lake, Minnesota",
+    "sector": "Wildfires Event | [48.16\u00b0N, 91.10\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 66.0,
+    "coords": [
+      48.161067,
+      -91.104833
+    ],
+    "bounding_box": [
+      47.911067,
+      -91.354833,
+      48.411067,
+      -90.854833
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_21386_48.16_-91.10.jpg",
+    "detected_utc": "2026-09-06 19:02:07 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire Little Knife, Lake, Minnesota. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_23459_40.00_-112.71.jpg": {
+    "id": "NASA-EONET-EONET_23459",
+    "title": "Captured Satellite Scene: Wildfire Tom Creek, Tooele, Utah",
+    "place_name": "Wildfire Tom Creek, Tooele, Utah",
+    "sector": "Wildfires Event | [40.00\u00b0N, 112.71\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 64.0,
+    "coords": [
+      40.00455,
+      -112.705867
+    ],
+    "bounding_box": [
+      39.75455,
+      -112.955867,
+      40.25455,
+      -112.455867
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_23459_40.00_-112.71.jpg",
+    "detected_utc": "2026-09-07 14:17:53 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire Tom Creek, Tooele, Utah. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_23672_47.54_-115.92.jpg": {
+    "id": "NASA-EONET-EONET_23672",
+    "title": "Captured Satellite Scene: Wildfire Dudley, Shoshone, Idaho",
+    "place_name": "Wildfire Dudley, Shoshone, Idaho",
+    "sector": "Wildfires Event | [47.54\u00b0N, 115.92\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 67.0,
+    "coords": [
+      47.539417,
+      -115.920767
+    ],
+    "bounding_box": [
+      47.289417,
+      -116.170767,
+      47.789417,
+      -115.670767
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_23672_47.54_-115.92.jpg",
+    "detected_utc": "2026-09-06 19:02:30 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire Dudley, Shoshone, Idaho. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_21400_44.11_-120.53.jpg": {
+    "id": "NASA-EONET-EONET_21400",
+    "title": "Captured Satellite Scene: Wildfire 0500 COYOTE, Crook, Oregon",
+    "place_name": "Wildfire 0500 COYOTE, Crook, Oregon",
+    "sector": "Wildfires Event | [44.11\u00b0N, 120.53\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 57.0,
+    "coords": [
+      44.1115,
+      -120.528667
+    ],
+    "bounding_box": [
+      43.8615,
+      -120.778667,
+      44.3615,
+      -120.278667
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_21400_44.11_-120.53.jpg",
+    "detected_utc": "2026-09-06 19:02:30 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire 0500 COYOTE, Crook, Oregon. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_22436_47.24_-117.51.jpg": {
+    "id": "NASA-EONET-EONET_22436",
+    "title": "Captured Satellite Scene: Wildfire WELLS ROAD, Whitman, Washington",
+    "place_name": "Wildfire WELLS ROAD, Whitman, Washington",
+    "sector": "Wildfires Event | [47.24\u00b0N, 117.51\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 68.0,
+    "coords": [
+      47.24,
+      -117.51
+    ],
+    "bounding_box": [
+      46.99,
+      -117.76,
+      47.49,
+      -117.26
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_22436_47.24_-117.51.jpg",
+    "detected_utc": "2026-09-06 19:02:30 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire WELLS ROAD, Whitman, Washington. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_22100_44.82_-106.41.jpg": {
+    "id": "NASA-EONET-EONET_22100",
+    "title": "Captured Satellite Scene: Wildfire Lumin, Sheridan, Wyoming",
+    "place_name": "Wildfire Lumin, Sheridan, Wyoming",
+    "sector": "Wildfires Event | [44.82\u00b0N, 106.41\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 58.0,
+    "coords": [
+      44.8235,
+      -106.4085
+    ],
+    "bounding_box": [
+      44.5735,
+      -106.6585,
+      45.0735,
+      -106.1585
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_22100_44.82_-106.41.jpg",
+    "detected_utc": "2026-09-06 19:02:30 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire Lumin, Sheridan, Wyoming. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_23214_46.18_-120.20.jpg": {
+    "id": "NASA-EONET-EONET_23214",
+    "title": "Captured Satellite Scene: Wildfire Colwash, Yakima, Washington",
+    "place_name": "Wildfire Colwash, Yakima, Washington",
+    "sector": "Wildfires Event | [46.18\u00b0N, 120.20\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 66.0,
+    "coords": [
+      46.17514,
+      -120.19615
+    ],
+    "bounding_box": [
+      45.92514,
+      -120.44615,
+      46.42514,
+      -119.94615
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_23214_46.18_-120.20.jpg",
+    "detected_utc": "2026-09-07 12:34:07 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire Colwash, Yakima, Washington. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_23218_39.54_-119.95.jpg": {
+    "id": "NASA-EONET-EONET_23218",
+    "title": "Captured Satellite Scene: Wildfire Hawk, Washoe, Nevada",
+    "place_name": "Wildfire Hawk, Washoe, Nevada",
+    "sector": "Wildfires Event | [39.54\u00b0N, 119.95\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 67.0,
+    "coords": [
+      39.5425,
+      -119.952333
+    ],
+    "bounding_box": [
+      39.2925,
+      -120.202333,
+      39.7925,
+      -119.702333
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_23218_39.54_-119.95.jpg",
+    "detected_utc": "2026-09-07 12:38:49 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire Hawk, Washoe, Nevada. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_21427_48.07_-118.31.jpg": {
+    "id": "NASA-EONET-EONET_21427",
+    "title": "Captured Satellite Scene: Wildfire Modrite, Ferry, Washington",
+    "place_name": "Wildfire Modrite, Ferry, Washington",
+    "sector": "Wildfires Event | [48.07\u00b0N, 118.31\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 57.0,
+    "coords": [
+      48.069,
+      -118.312583
+    ],
+    "bounding_box": [
+      47.819,
+      -118.562583,
+      48.319,
+      -118.062583
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_21427_48.07_-118.31.jpg",
+    "detected_utc": "2026-09-07 12:54:18 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire Modrite, Ferry, Washington. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "NASA_EONET_EONET_22118_37.12_-106.99.jpg": {
+    "id": "NASA-EONET-EONET_22118",
+    "title": "Captured Satellite Scene: Wildfire Rio Blanco, Archuleta, Colorado",
+    "place_name": "Wildfire Rio Blanco, Archuleta, Colorado",
+    "sector": "Wildfires Event | [37.12\u00b0N, 106.99\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 60.0,
+    "coords": [
+      37.124649,
+      -106.985207
+    ],
+    "bounding_box": [
+      36.874649,
+      -107.235207,
+      37.374649,
+      -106.735207
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_22118_37.12_-106.99.jpg",
+    "detected_utc": "2026-09-07 13:04:23 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire Rio Blanco, Archuleta, Colorado. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
+  },
+  "LIVE_INTERCEPT_\u041d\u0430\u0437\u0438\u043d\u0441\u043a\u043e\u0435_\u0441\u0435\u043b\u044c\u0441\u043a\u043e\u0435_\u043f_60.00_79.14.jpg": {
+    "id": "LIVE-INTERCEPT-\u041d\u0430\u0437\u0438\u043d\u0441\u043a\u043e\u0435_\u0441\u0435\u043b\u044c\u0441\u043a\u043e\u0435_\u043f\u043e\u0441\u0435\u043b\u0435\u043d\u0438\u0435,_\u0422\u043e\u043c\u0441\u043a\u0430\u044f_\u043e\u0431\u043b\u0430\u0441\u0442\u044c,_\u0420\u043e\u0441\u0441\u0438\u044f",
+    "title": "Captured Satellite Scene: \u041d\u0430\u0437\u0438\u043d\u0441\u043a\u043e\u0435 \u0441\u0435\u043b\u044c\u0441\u043a\u043e\u0435 \u043f\u043e\u0441\u0435\u043b\u0435\u043d\u0438\u0435, \u0422\u043e\u043c\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c, \u0420\u043e\u0441\u0441\u0438\u044f",
+    "place_name": "\u041d\u0430\u0437\u0438\u043d\u0441\u043a\u043e\u0435 \u0441\u0435\u043b\u044c\u0441\u043a\u043e\u0435 \u043f\u043e\u0441\u0435\u043b\u0435\u043d\u0438\u0435, \u0422\u043e\u043c\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c, \u0420\u043e\u0441\u0441\u0438\u044f",
+    "sector": "\u041d\u0430\u0437\u0438\u043d\u0441\u043a\u043e\u0435 \u0441\u0435\u043b\u044c\u0441\u043a\u043e\u0435 \u043f\u043e\u0441\u0435\u043b\u0435\u043d\u0438\u0435, \u0422\u043e\u043c\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c, \u0420\u043e\u0441\u0441\u0438\u044f [60.00\u00b0N, 79.14\u00b0E]",
+    "category": "\ud83c\udfaf MULTI-HAZARD GEOSPATIAL TARGET",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 0.0,
+    "coords": [
+      60.0,
+      79.1378
+    ],
+    "bounding_box": [
+      59.92,
+      79.0578,
+      60.08,
+      79.2178
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\LIVE_INTERCEPT_\u041d\u0430\u0437\u0438\u043d\u0441\u043a\u043e\u0435_\u0441\u0435\u043b\u044c\u0441\u043a\u043e\u0435_\u043f_60.00_79.14.jpg",
+    "detected_utc": "2026-09-07 14:15:35 UTC",
+    "sensor_platform": "High-Resolution Optical Earth Observation (1024x1024 px @ 15km AOI)",
+    "impact_summary": "On-demand orbital satellite intercept targeting \u041d\u0430\u0437\u0438\u043d\u0441\u043a\u043e\u0435 \u0441\u0435\u043b\u044c\u0441\u043a\u043e\u0435 \u043f\u043e\u0441\u0435\u043b\u0435\u043d\u0438\u0435, \u0422\u043e\u043c\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c, \u0420\u043e\u0441\u0441\u0438\u044f for real-time LULC and hazard quantification.",
+    "affected_population_est": 0,
+    "critical_infrastructure": [
+      "Regional Transport Arteries",
+      "Power Transmission Lines",
+      "Civil Habitations"
+    ],
+    "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
+    "is_live_captured": true
+  }
+}

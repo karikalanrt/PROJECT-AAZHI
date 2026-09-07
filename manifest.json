@@ -1,0 +1,17 @@
+{
+  "name": "AAZHI-SAT Satellite Intelligence Command",
+  "short_name": "AAZHI-SAT",
+  "description": "Autonomous Multi-Spectral & Synthetic Aperture Radar (SAR) Earth Observation Platform for Disaster Management",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080d1a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "https://img.icons8.com/isometric-line/512/satellite.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
