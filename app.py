@@ -734,6 +734,95 @@ st.markdown(
         font-size: 12px;
         color: #e2e8f0;
     }
+
+    /* ================================================================
+       MOBILE RESPONSIVENESS & TOUCH OPTIMIZATIONS (@media queries)
+    ================================================================ */
+    @media screen and (max-width: 768px) {
+        /* Container Spacing */
+        .block-container,
+        div[data-testid="block-container"] {
+            padding: 1.2rem 0.5rem 2rem 0.5rem !important;
+            max-width: 100% !important;
+        }
+
+        /* App Header Card Mobile */
+        .app-header-card {
+            padding: 14px 16px !important;
+            margin-bottom: 12px !important;
+            border-radius: 10px !important;
+        }
+        .brand-title {
+            font-size: 16px !important;
+            line-height: 1.3 !important;
+        }
+        .brand-sub {
+            font-size: 11px !important;
+        }
+
+        /* Badges on mobile */
+        .badge-pill {
+            font-size: 9.5px !important;
+            padding: 3px 8px !important;
+        }
+
+        /* KPI Grid Cards on Mobile */
+        .kpi-card {
+            padding: 12px 14px !important;
+            min-height: auto !important;
+            margin-bottom: 8px !important;
+        }
+        .kpi-value {
+            font-size: 18px !important;
+        }
+        .kpi-label {
+            font-size: 10px !important;
+        }
+
+        /* Tabs Scrollable on Mobile */
+        .stTabs [data-baseweb="tab-list"] {
+            overflow-x: auto !important;
+            flex-wrap: nowrap !important;
+            white-space: nowrap !important;
+            scrollbar-width: none !important;
+            -webkit-overflow-scrolling: touch !important;
+            gap: 4px !important;
+            padding-bottom: 4px !important;
+        }
+        .stTabs [data-baseweb="tab"] {
+            font-size: 11.5px !important;
+            padding: 6px 10px !important;
+            flex-shrink: 0 !important;
+        }
+
+        /* Alert Banners on Mobile */
+        .geo-alert-banner,
+        .geo-alert-banner-warning,
+        .geo-alert-banner-nominal {
+            padding: 12px 14px !important;
+        }
+        .alert-title,
+        .alert-title-warning,
+        .alert-title-nominal {
+            font-size: 13px !important;
+        }
+        .alert-meta {
+            font-size: 10.5px !important;
+        }
+
+        /* Sidebar Responsive */
+        [data-testid="stSidebar"] {
+            width: 85vw !important;
+            max-width: 320px !important;
+        }
+        
+        /* Auto-Installer Buttons */
+        div[data-testid="stDownloadButton"] button {
+            width: 100% !important;
+            font-size: 12px !important;
+            padding: 8px 12px !important;
+        }
+    }
     </style>
     """,
     unsafe_allow_html=True,
