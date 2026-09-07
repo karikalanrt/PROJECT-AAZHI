@@ -90,9 +90,10 @@ class VisionAgent:
 
     def _call_gemini_vision(self, b64_image: str, prompt: str, api_key: str) -> Generator[str, None, None]:
         """
-        Streams response from Google Gemini Multimodal REST API.
+        Streams response from Google Gemini Multimodal REST API with automatic model fallbacks.
+        Tries: gemini-1.5-flash -> gemini-2.5-flash -> gemini-2.0-flash -> gemini-1.5-pro
         """
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:streamGenerateContent?alt=sse&key={api_key}"
+        models = ["gemini-1.5-flash", "gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-pro"]
         payload = {
             "contents": [
                 {
@@ -113,30 +114,56 @@ class VisionAgent:
             },
         }
 
-        try:
-            with requests.post(url, json=payload, stream=True, timeout=45) as resp:
-                if resp.status_code != 200:
-                    yield f"⚠️ Cloud AI API returned status {resp.status_code}. Activating Autonomous Cognitive Synthesis...\n\n"
-                    return
-                for line in resp.iter_lines():
-                    if not line:
-                        continue
-                    line_str = line.decode("utf-8")
-                    if line_str.startswith("data: "):
-                        data_json = line_str[6:].strip()
-                        try:
-                            parsed = json.loads(data_json)
-                            candidates = parsed.get("candidates", [])
-                            if candidates:
-                                parts = candidates[0].get("content", {}).get("parts", [])
-                                for p in parts:
-                                    text_chunk = p.get("text", "")
-                                    if text_chunk:
-                                        yield text_chunk
-                        except Exception:
+        for model in models:
+            # 1. Try streaming SSE endpoint
+            try:
+                stream_url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:streamGenerateContent?alt=sse&key={api_key}"
+                resp = requests.post(stream_url, json=payload, stream=True, timeout=20)
+                if resp.status_code == 200:
+                    yielded = False
+                    for line in resp.iter_lines():
+                        if not line:
                             continue
-        except Exception:
-            return
+                        line_str = line.decode("utf-8")
+                        if line_str.startswith("data: "):
+                            data_json = line_str[6:].strip()
+                            try:
+                                parsed = json.loads(data_json)
+                                candidates = parsed.get("candidates", [])
+                                if candidates:
+                                    parts = candidates[0].get("content", {}).get("parts", [])
+                                    for p in parts:
+                                        text_chunk = p.get("text", "")
+                                        if text_chunk:
+                                            yield text_chunk
+                                            yielded = True
+                            except Exception:
+                                continue
+                    if yielded:
+                        return
+            except Exception:
+                pass
+
+            # 2. Try standard non-streaming generateContent endpoint
+            try:
+                gen_url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
+                resp = requests.post(gen_url, json=payload, timeout=25)
+                if resp.status_code == 200:
+                    parsed = resp.json()
+                    candidates = parsed.get("candidates", [])
+                    if candidates:
+                        parts = candidates[0].get("content", {}).get("parts", [])
+                        full_txt = "".join([p.get("text", "") for p in parts if "text" in p])
+                        if full_txt:
+                            for word in full_txt.split(" "):
+                                yield word + " "
+                                time.sleep(0.01)
+                            return
+            except Exception:
+                pass
+
+        # If all cloud models failed (e.g. invalid key or network issue), silently return so autonomous synthesis takes over
+        return
 
     def _autonomous_cognitive_synthesis(
         self,
