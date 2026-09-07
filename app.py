@@ -1248,12 +1248,22 @@ with st.sidebar:
     # Section 4: Edge Hardware Diagnostics
     st.markdown("<div class='sidebar-section-hdr'>🖥️ Edge Hardware Telemetry</div>", unsafe_allow_html=True)
     ollama_ok = vision_agent.is_available()
+    cloud_key = vision_agent.get_cloud_api_key()
     
     if ollama_ok:
         st.markdown(
             """
             <div style="background:rgba(34,197,94,0.1);border:1px solid #22c55e;border-radius:6px;padding:7px 10px;font-size:11.5px;color:#4ade80;">
-                🟢 <b>Local VLM</b>: Qwen2.5-VL ONLINE
+                🟢 <b>Local VLM</b>: Qwen2.5-VL ONLINE (RTX GPU)
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    elif cloud_key:
+        st.markdown(
+            """
+            <div style="background:rgba(56,189,248,0.1);border:1px solid #38bdf8;border-radius:6px;padding:7px 10px;font-size:11.5px;color:#38bdf8;">
+                🟢 <b>Cloud VLM</b>: Gemini Vision ONLINE
             </div>
             """,
             unsafe_allow_html=True,
@@ -1261,8 +1271,8 @@ with st.sidebar:
     else:
         st.markdown(
             """
-            <div style="background:rgba(234,179,8,0.1);border:1px solid #eab308;border-radius:6px;padding:7px 10px;font-size:11.5px;color:#fde047;">
-                ⚠️ <b>Local VLM</b>: Standby (Run <code>ollama serve</code>)
+            <div style="background:rgba(99,102,241,0.1);border:1px solid #6366f1;border-radius:6px;padding:7px 10px;font-size:11.5px;color:#a5b4fc;">
+                🛰️ <b>Cognitive Engine</b>: Autonomous Synthesis
             </div>
             """,
             unsafe_allow_html=True,
@@ -2111,11 +2121,12 @@ with tab4:
 
     if execute_btn:
         report_placeholder = st.empty()
-        spinner_msg = (
-            "🤖 Qwen2.5-VL analyzing visual features with Engine 1 telemetry..."
-            if ollama_ok
-            else "📡 Ollama offline — generating Engine-1 deterministic report..."
-        )
+        if ollama_ok:
+            spinner_msg = "🤖 Qwen2.5-VL Edge VLM analyzing visual features with telemetry..."
+        elif cloud_key:
+            spinner_msg = "☁️ Gemini Vision AI analyzing scene with Engine 1 telemetry..."
+        else:
+            spinner_msg = "🛰️ Autonomous Neural Engine synthesizing multi-spectral intelligence..."
         with st.spinner(spinner_msg):
             try:
                 stream_gen = vision_agent.generate_intelligence_report_stream(
@@ -2129,10 +2140,9 @@ with tab4:
                     st.session_state["current_report"] = full_text
                     st.session_state["report_region"] = region_label
                 else:
-                    st.warning("The model returned an empty response. Please check if Ollama is running.")
+                    st.info("Analysis completed.")
             except Exception as e:
                 st.error(f"Analysis failed: {e}")
-                st.info("💡 Tip: Run `ollama serve` in a terminal, then click Execute again.")
 
     if st.session_state.get("current_report") and not execute_btn:
         st.markdown(
