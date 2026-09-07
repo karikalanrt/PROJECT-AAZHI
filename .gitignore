@@ -13,6 +13,8 @@ ENV/
 # Environment Variables & Keys
 .env
 *.env
+.streamlit/secrets.toml
+secrets.toml
 
 # IDE / Editor Settings
 .vscode/
