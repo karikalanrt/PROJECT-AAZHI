@@ -158,21 +158,21 @@ components.html(
     }
 
     function updateNetworkBadge() {
-        var pDoc = window.parent.document;
+        var pDoc = window.parent.document || document;
         var badge = pDoc.getElementById('aazhi-pwa-net-badge');
         if (!badge) {
             badge = pDoc.createElement('div');
             badge.id = 'aazhi-pwa-net-badge';
             badge.style.position = 'fixed';
-            badge.style.top = '12px';
-            badge.style.right = '20px';
+            badge.style.top = '10px';
+            badge.style.right = '55px';
             badge.style.zIndex = '999999';
-            badge.style.padding = '6px 14px';
+            badge.style.padding = '4px 10px';
             badge.style.borderRadius = '20px';
-            badge.style.fontSize = '11px';
+            badge.style.fontSize = '10px';
             badge.style.fontWeight = '700';
             badge.style.fontFamily = 'Inter, sans-serif';
-            badge.style.letterSpacing = '0.5px';
+            badge.style.letterSpacing = '0.4px';
             badge.style.boxShadow = '0 4px 14px rgba(0,0,0,0.5)';
             badge.style.transition = 'all 0.3s ease';
             pDoc.body.appendChild(badge);
@@ -182,36 +182,79 @@ components.html(
             badge.style.background = 'rgba(34, 197, 94, 0.15)';
             badge.style.color = '#4ade80';
             badge.style.border = '1px solid rgba(34, 197, 94, 0.4)';
-            badge.innerHTML = '🟢 LIVE CLOUD MODE (Sentinel-1/2 API)';
+            badge.innerHTML = '🟢 LIVE CLOUD';
         } else {
             badge.style.background = 'rgba(234, 179, 8, 0.25)';
             badge.style.color = '#fde047';
             badge.style.border = '1px solid rgba(234, 179, 8, 0.6)';
-            badge.innerHTML = '⚠️ DISCONNECTED - SWITCHED TO OFFLINE EDGE MODE';
+            badge.innerHTML = '⚠️ OFFLINE EDGE';
         }
     }
 
     function removeStreamlitBranding() {
-        var pDoc = window.parent.document;
-        var selectors = [
-            'footer',
-            '[class*="viewerBadge"]',
-            '[class*="manageApp"]',
-            '[class*="ProfileButton"]',
-            '[data-testid="manage-app-button"]',
-            '#manage-app-button',
-            '[data-testid="stSidebarFooter"]',
-            '[data-testid="stHeaderActionElements"]',
-            '.stAppDeployButton',
-            '[data-testid="stStatusWidget"]'
-        ];
-        selectors.forEach(function(sel) {
-            var elements = pDoc.querySelectorAll(sel);
-            elements.forEach(function(el) {
-                el.style.display = 'none';
-                el.style.visibility = 'hidden';
-                el.style.opacity = '0';
-                el.style.pointerEvents = 'none';
+        var targets = [window.document, window.parent.document];
+        try { if (window.top && window.top.document) targets.push(window.top.document); } catch(e){}
+        
+        targets.forEach(function(doc) {
+            if (!doc) return;
+            
+            // Inject Master Kill CSS into document head
+            var styleId = 'aazhi-kill-streamlit-branding';
+            if (!doc.getElementById(styleId)) {
+                var style = doc.createElement('style');
+                style.id = styleId;
+                style.innerHTML = `
+                    footer,
+                    [class*="viewerBadge"],
+                    [class*="manageApp"],
+                    [class*="FloatingProfile"],
+                    [class*="floatingProfile"],
+                    [class*="ProfileButton"],
+                    [class*="profileButton"],
+                    [class*="HostInfo"],
+                    [class*="appViewer"],
+                    [data-testid="manage-app-button"],
+                    #manage-app-button,
+                    [data-testid="stSidebarFooter"],
+                    [data-testid="stHeaderActionElements"],
+                    .stAppDeployButton,
+                    [data-testid="stStatusWidget"],
+                    div[style*="position: fixed"][style*="bottom: 0"],
+                    div[style*="position: fixed"][style*="bottom: 1"],
+                    div[style*="position: fixed"][style*="bottom: 2"] {
+                        display: none !important;
+                        visibility: hidden !important;
+                        opacity: 0 !important;
+                        pointer-events: none !important;
+                        height: 0 !important;
+                        width: 0 !important;
+                        overflow: hidden !important;
+                    }
+                `;
+                doc.head.appendChild(style);
+            }
+
+            // Remove any avatar images or red crown badges directly
+            var allImgs = doc.querySelectorAll('img[src*="githubusercontent.com"], img[src*="avatar"], svg[viewBox="0 0 24 24"]');
+            allImgs.forEach(function(img) {
+                var p = img.closest('div[style*="position: fixed"], [class*="viewerBadge"], [class*="profile"], [class*="Profile"], [class*="manageApp"], [data-testid="manage-app-button"]');
+                if (p) {
+                    p.style.display = 'none';
+                    p.style.opacity = '0';
+                    p.style.visibility = 'hidden';
+                }
+            });
+
+            // Target bottom-right floating bar
+            var floatingDivs = doc.querySelectorAll('div');
+            floatingDivs.forEach(function(d) {
+                var s = window.getComputedStyle(d);
+                if (s.position === 'fixed' && (parseInt(s.bottom) < 50 || s.bottom === '0px') && (parseInt(s.right) < 80 || s.right === '0px') && d.id !== 'aazhi-pwa-net-badge') {
+                    if (d.innerHTML.includes('streamlit') || d.innerHTML.includes('github') || d.querySelector('img') || d.querySelector('svg')) {
+                        d.style.display = 'none';
+                        d.style.opacity = '0';
+                    }
+                }
             });
         });
     }
@@ -223,7 +266,7 @@ components.html(
         removeStreamlitBranding();
     });
     setInterval(updateNetworkBadge, 1000);
-    setInterval(removeStreamlitBranding, 400);
+    setInterval(removeStreamlitBranding, 300);
     updateNetworkBadge();
     removeStreamlitBranding();
     </script>
