@@ -701,10 +701,13 @@ with st.sidebar:
                 <span>💾</span> ZERO-INTERNET OFFLINE MODE
             </div>
             <div style="font-size: 10.5px; color: #94a3b8; line-height: 1.4; margin-bottom: 8px;">
-                Download standalone 1-click launcher for field disaster blackouts.
+                1-Click Auto-Extractor & Desktop Shortcut Installer.
             </div>
-            <a href="https://github.com/karikalanrt/PROJECT-AAZHI/archive/refs/heads/main.zip" target="_blank" style="display: block; text-align: center; background: linear-gradient(135deg, #1d4ed8, #2563eb); color: #ffffff; text-decoration: none; padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; box-shadow: 0 2px 8px rgba(37,99,235,0.3);">
-                📥 Download Offline Package (.ZIP)
+            <a href="https://raw.githubusercontent.com/karikalanrt/PROJECT-AAZHI/main/Install_AAZHI.bat" download="Install_AAZHI.bat" target="_blank" style="display: block; text-align: center; background: linear-gradient(135deg, #1d4ed8, #2563eb); color: #ffffff; text-decoration: none; padding: 7px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; box-shadow: 0 2px 8px rgba(37,99,235,0.3); margin-bottom: 6px;">
+                ⚡ 1-Click Auto-Installer (.BAT)
+            </a>
+            <a href="https://github.com/karikalanrt/PROJECT-AAZHI/archive/refs/heads/main.zip" target="_blank" style="display: block; text-align: center; background: rgba(15,23,42,0.8); color: #94a3b8; border: 1px solid #334155; text-decoration: none; padding: 4px 10px; border-radius: 6px; font-size: 10.5px;">
+                📦 Direct ZIP Package (.zip)
             </a>
         </div>
         """,
