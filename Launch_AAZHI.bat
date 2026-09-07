@@ -19,13 +19,10 @@ if errorlevel 1 (
     echo [OK] All satellite and AI engines are ready.
 )
 
-:: Auto-Create Windows Desktop Shortcut
-set "SHORTCUT_PATH=%USERPROFILE%\Desktop\AAZHI Satellite Intelligence.lnk"
-if not exist "%SHORTCUT_PATH%" (
-    echo [INFO] Pinning 1-Click Launcher to your Windows Desktop
-    powershell -NoProfile -ExecutionPolicy Bypass -Command "$ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut('%SHORTCUT_PATH%'); $s.TargetPath = '%~dp0Launch_AAZHI.bat'; $s.WorkingDirectory = '%~dp0'; $s.IconLocation = 'shell32.dll,14'; $s.Description = 'AAZHI Satellite Intelligence Command - Offline Edge'; $s.Save()" >nul 2>&1
-    echo [OK] Shortcut created on your Desktop: 'AAZHI Satellite Intelligence'
-)
+:: Auto-Create Windows Desktop Shortcut (Supports both OneDrive and Standard Desktops)
+echo [INFO] Pinning 1-Click Launcher to your Windows Desktop
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$d = [Environment]::GetFolderPath('Desktop'); $w = New-Object -ComObject WScript.Shell; $s = $w.CreateShortcut((Join-Path $d 'AAZHI Satellite Intelligence.lnk')); $s.TargetPath = '%~dp0Launch_AAZHI.bat'; $s.WorkingDirectory = '%~dp0'; $s.IconLocation = 'shell32.dll,14'; $s.Description = 'AAZHI Satellite Intelligence Command - Offline Edge'; $s.Save()" >nul 2>&1
+echo [OK] Shortcut created on your Desktop: 'AAZHI Satellite Intelligence'
 
 echo.
 echo [2/3] Initializing Offline Edge Radar and Spectral Physics Engines
