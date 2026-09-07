@@ -1148,10 +1148,21 @@ with st.sidebar:
                 if existing_caches:
                     active_img = Image.open(existing_caches[0])
             
+            # Calibrate active anomaly using spectral pixel metrics so sidebar & main alert banner match 100%
+            if active_img is not None:
+                try:
+                    _early_metrics, _ = math_engine.analyze(active_img, gsd_meters=gsd_value)
+                    active_anomaly = radar_engine.classify_scene_from_metrics(
+                        _early_metrics, region_label, active_coords, base_anomaly=active_anomaly, now_utc=now_utc
+                    )
+                    active_anomaly_info = active_anomaly
+                except Exception:
+                    pass
+
             st.markdown(
                 f"""
                 <div class="sidebar-info-card" style="border-left:3px solid {'#ef4444' if 'RED' in active_anomaly.get('severity', '') else '#eab308'};">
-                    🚨 <b>Threat Score</b>: <code>{active_anomaly.get('threat_score', 80.0)}/100</code><br/>
+                    🚨 <b>Threat Score</b>: <code>{active_anomaly.get('threat_score', 80.0):.1f}/100</code><br/>
                     📍 <b>Coords</b>: <code>{active_coords[0]:.4f}°N, {active_coords[1]:.4f}°E</code><br/>
                     👥 <b>Population at Risk</b>: <code>~{active_anomaly.get('affected_population_est', 50000):,}</code><br/>
                     🛰️ <b>Platform</b>: <code>{active_anomaly.get('sensor_platform', 'Optical EO')}</code>
