@@ -694,6 +694,22 @@ with st.sidebar:
         """,
         unsafe_allow_html=True,
     )
+    st.markdown(
+        """
+        <div style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(15, 23, 42, 0.95)); border: 1px solid rgba(59, 130, 246, 0.4); border-radius: 8px; padding: 10px 12px; margin-top: 8px; margin-bottom: 8px;">
+            <div style="font-size: 11px; font-weight: 700; color: #60a5fa; margin-bottom: 3px; display: flex; align-items: center; gap: 6px;">
+                <span>💾</span> ZERO-INTERNET OFFLINE MODE
+            </div>
+            <div style="font-size: 10.5px; color: #94a3b8; line-height: 1.4; margin-bottom: 8px;">
+                Download standalone 1-click launcher for field disaster blackouts.
+            </div>
+            <a href="https://github.com/karikalanrt/PROJECT-AAZHI/archive/refs/heads/main.zip" target="_blank" style="display: block; text-align: center; background: linear-gradient(135deg, #1d4ed8, #2563eb); color: #ffffff; text-decoration: none; padding: 6px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; box-shadow: 0 2px 8px rgba(37,99,235,0.3);">
+                📥 Download Offline Package (.ZIP)
+            </a>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
     st.markdown("<hr style='margin:10px 0;border-color:#1e293b;'/>", unsafe_allow_html=True)
     
     # Section 1: Constellation & Sensor Preset
@@ -1087,10 +1103,13 @@ st.markdown(
             <div class="brand-title">
                 <span>🛰️ AAZHI SATELLITE INTELLIGENCE COMMAND</span>
             </div>
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
                 <span class="badge-pill badge-emerald">🟢 LIVE ORBITAL PASS</span>
                 <span class="badge-pill badge-cyan">SENSOR: VNIR / SAR</span>
                 <span class="badge-pill badge-indigo">🛡️ AIR-GAPPED GPU</span>
+                <a href="https://github.com/karikalanrt/PROJECT-AAZHI/archive/refs/heads/main.zip" target="_blank" style="text-decoration:none;">
+                    <span class="badge-pill" style="background:rgba(37,99,235,0.25); color:#60a5fa; border:1px solid #3b82f6; cursor:pointer;">💾 OFFLINE LAUNCHER (.ZIP)</span>
+                </a>
             </div>
         </div>
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-top:10px; border-top:1px solid #1e293b; padding-top:8px; gap: 10px;">
