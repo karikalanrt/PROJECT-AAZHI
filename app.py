@@ -694,25 +694,34 @@ with st.sidebar:
         """,
         unsafe_allow_html=True,
     )
+    installer_path = os.path.join(os.path.dirname(__file__), "Install_AAZHI.bat")
+    installer_bytes = b""
+    if os.path.exists(installer_path):
+        with open(installer_path, "rb") as f:
+            installer_bytes = f.read()
+
     st.markdown(
         """
-        <div style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(15, 23, 42, 0.95)); border: 1px solid rgba(59, 130, 246, 0.4); border-radius: 8px; padding: 10px 12px; margin-top: 8px; margin-bottom: 8px;">
+        <div style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(15, 23, 42, 0.95)); border: 1px solid rgba(59, 130, 246, 0.4); border-radius: 8px; padding: 10px 12px; margin-top: 8px; margin-bottom: 6px;">
             <div style="font-size: 11px; font-weight: 700; color: #60a5fa; margin-bottom: 3px; display: flex; align-items: center; gap: 6px;">
                 <span>💾</span> ZERO-INTERNET OFFLINE MODE
             </div>
-            <div style="font-size: 10.5px; color: #94a3b8; line-height: 1.4; margin-bottom: 8px;">
+            <div style="font-size: 10.5px; color: #94a3b8; line-height: 1.4; margin-bottom: 6px;">
                 1-Click Auto-Extractor & Desktop Shortcut Installer.
             </div>
-            <a href="https://raw.githubusercontent.com/karikalanrt/PROJECT-AAZHI/main/Install_AAZHI.bat" download="Install_AAZHI.bat" target="_blank" style="display: block; text-align: center; background: linear-gradient(135deg, #1d4ed8, #2563eb); color: #ffffff; text-decoration: none; padding: 7px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; box-shadow: 0 2px 8px rgba(37,99,235,0.3); margin-bottom: 6px;">
-                ⚡ 1-Click Auto-Installer (.BAT)
-            </a>
-            <a href="https://github.com/karikalanrt/PROJECT-AAZHI/archive/refs/heads/main.zip" target="_blank" style="display: block; text-align: center; background: rgba(15,23,42,0.8); color: #94a3b8; border: 1px solid #334155; text-decoration: none; padding: 4px 10px; border-radius: 6px; font-size: 10.5px;">
-                📦 Direct ZIP Package (.zip)
-            </a>
         </div>
         """,
         unsafe_allow_html=True,
     )
+    if installer_bytes:
+        st.download_button(
+            label="⚡ Download 1-Click Auto-Installer (.BAT)",
+            data=installer_bytes,
+            file_name="Install_AAZHI.bat",
+            mime="application/octet-stream",
+            use_container_width=True,
+            help="Downloads the auto-installer script to your Downloads folder.",
+        )
     st.markdown("<hr style='margin:10px 0;border-color:#1e293b;'/>", unsafe_allow_html=True)
     
     # Section 1: Constellation & Sensor Preset
