@@ -1517,5 +1517,36 @@
     ],
     "ndrf_recommendation": "Execute priority multispectral reconnaissance and maintain tactical liaison with local emergency coordination centres.",
     "is_live_captured": true
+  },
+  "NASA_EONET_EONET_23664_30.37_-100.15.jpg": {
+    "id": "NASA-EONET-EONET_23664",
+    "title": "Captured Satellite Scene: Wildfire West Fork, Sutton, Texas",
+    "place_name": "Wildfire West Fork, Sutton, Texas",
+    "sector": "Wildfires Event | [30.37\u00b0N, 100.15\u00b0W]",
+    "category": "Wildfires",
+    "severity": "ORANGE-BRAVO (HIGH ALERT)",
+    "threat_score": 66.0,
+    "coords": [
+      30.36872624,
+      -100.1516574
+    ],
+    "bounding_box": [
+      30.11872624,
+      -100.4016574,
+      30.61872624,
+      -99.9016574
+    ],
+    "sample_image": "D:\\MY WORKS\\SIH HACKATHONS\\SIH 2026\\PROJECT AAZHI\\sample_data\\live_cache\\NASA_EONET_EONET_23664_30.37_-100.15.jpg",
+    "detected_utc": "2026-09-11 10:09:04 UTC",
+    "sensor_platform": "NASA Terra/Aqua MODIS & VIIRS Near-Real-Time",
+    "impact_summary": "Active wildfires event cataloged by NASA EONET Earth Observatory: Wildfire West Fork, Sutton, Texas. Real-time orbital monitoring active.",
+    "affected_population_est": 38000,
+    "critical_infrastructure": [
+      "Forest Buffer Zones",
+      "Rural Settlements",
+      "Power Lines"
+    ],
+    "ndrf_recommendation": "Monitor NASA orbital trajectory passes for Wildfires; place State Emergency Operations Centre on ORANGE-BRAVO standby.",
+    "is_live_captured": true
   }
 }

@@ -3,7 +3,7 @@ AAZHI SATELLITE INTELLIGENCE (AAZHI-SAT GEO-AI)
 Autonomous Multi-Spectral & Synthetic Aperture Radar (SAR) Earth Observation Platform
 
 Production-Grade Air-Gapped Streamlit Web Application:
-- Dual-Engine: Quantitative Spectral Physics (Engine 1) + Local Qwen2.5-VL Vision AI (Engine 2)
+- Dual-Engine: Quantitative Spectral Physics (Engine 1) + Local Qwen2.5-VL / Gemini Vision AI (Engine 2)
 - Ultra-Modern Cyber-Tactical Dark Glassmorphism Interface with Live Telemetry
 - Interactive Before/After Swipe Slider (Optical RGB vs. Radiometric / LULC / SAR)
 - Real-Time Geospatial Folium Tile Map with Geocoded Target AOIs & Bounding Boxes
@@ -17,6 +17,9 @@ import os
 import io
 import json
 import datetime
+import urllib.request
+from typing import Optional, Tuple
+
 import streamlit as st
 import streamlit.components.v1 as components
 import numpy as np
@@ -24,16 +27,37 @@ import pandas as pd
 from PIL import Image, ExifTags
 import cv2
 import plotly.express as px
+import plotly.graph_objects as go
+import folium
+from streamlit_folium import st_folium
 
-import rasterio
-from rasterio.warp import transform_bounds
+try:
+    import rasterio
+    from rasterio.warp import transform_bounds
+    HAS_RASTERIO = True
+except ImportError:
+    HAS_RASTERIO = False
 
+try:
+    from streamlit_image_comparison import image_comparison
+    HAS_IMAGE_COMPARISON = True
+except ImportError:
+    HAS_IMAGE_COMPARISON = False
+
+# Core Computational Engines
+from engine.spectral_math import SpectralMathEngine, SENSOR_GSD_PRESETS, SpectralMetrics
+from engine.vision_agent import VisionAgent
+from engine.report_gen import PDFReportGenerator
+from engine.autonomous_radar import AnomalyRadarEngine
+from engine.pathfinding import PathfindingEngine
+from engine.audio_dispatch import AudioDispatchEngine
 from engine import weather_fusion
 
+
 @st.cache_data(ttl=3600)
-def get_place_name(lat, lon):
+def get_place_name(lat: float, lon: float) -> str:
+    """Reverse-geocodes coordinate pair into human-readable location."""
     try:
-        import urllib.request, json
         url = f"https://nominatim.openstreetmap.org/reverse?format=json&lat={lat}&lon={lon}&zoom=10"
         req = urllib.request.Request(url, headers={"User-Agent": "AazhiSat-GeoAI/2026"})
         with urllib.request.urlopen(req, timeout=2.5) as response:
@@ -41,7 +65,7 @@ def get_place_name(lat, lon):
                 data = json.loads(response.read().decode('utf-8'))
                 if "address" in data:
                     addr = data["address"]
-                    name = addr.get("city", addr.get("town", addr.get("municipality", addr.get("county", ""))))
+                    name = addr.get("city") or addr.get("town") or addr.get("municipality") or addr.get("county", "")
                     state = addr.get("state", "")
                     country = addr.get("country", "")
                     parts = [p for p in [name, state, country] if p]
@@ -51,7 +75,11 @@ def get_place_name(lat, lon):
         pass
     return "Custom Coordinate Intercept"
 
-def get_geotiff_location(file_bytes):
+
+def get_geotiff_location(file_bytes: bytes) -> Optional[Tuple[float, float]]:
+    """Extracts center latitude and longitude from GeoTIFF raster metadata."""
+    if not HAS_RASTERIO:
+        return None
     try:
         with rasterio.MemoryFile(file_bytes) as memfile:
             with memfile.open() as dataset:
@@ -65,17 +93,21 @@ def get_geotiff_location(file_bytes):
     except Exception:
         return None
 
-def get_exif_location(pil_img):
+
+def get_exif_location(pil_img: Image.Image) -> Optional[Tuple[float, float]]:
+    """Extracts GPS latitude and longitude from optical camera EXIF metadata."""
     try:
         exif = pil_img._getexif()
-        if not exif: return None
+        if not exif:
+            return None
         gps_info = None
         for tag, value in exif.items():
             decoded = ExifTags.TAGS.get(tag, tag)
             if decoded == "GPSInfo":
                 gps_info = value
                 break
-        if not gps_info: return None
+        if not gps_info:
+            return None
         
         gps_data = {}
         for t in gps_info:
@@ -89,43 +121,14 @@ def get_exif_location(pil_img):
             return d + (m / 60.0) + (s / 3600.0)
             
         lat = to_decimal(gps_data.get('GPSLatitude'))
-        if gps_data.get('GPSLatitudeRef') != 'N': lat = -lat
+        if gps_data.get('GPSLatitudeRef') != 'N':
+            lat = -lat
         lon = to_decimal(gps_data.get('GPSLongitude'))
-        if gps_data.get('GPSLongitudeRef') != 'E': lon = -lon
+        if gps_data.get('GPSLongitudeRef') != 'E':
+            lon = -lon
         return lat, lon
     except Exception:
         return None
-import plotly.graph_objects as go
-import folium
-from streamlit_folium import st_folium
-
-try:
-    from streamlit_image_comparison import image_comparison
-    HAS_IMAGE_COMPARISON = True
-except ImportError:
-    HAS_IMAGE_COMPARISON = False
-
-import importlib
-import engine.spectral_math
-import engine.vision_agent
-import engine.report_gen
-import engine.autonomous_radar
-import engine.pathfinding
-import engine.audio_dispatch
-
-importlib.reload(engine.spectral_math)
-importlib.reload(engine.vision_agent)
-importlib.reload(engine.report_gen)
-importlib.reload(engine.autonomous_radar)
-importlib.reload(engine.pathfinding)
-importlib.reload(engine.audio_dispatch)
-
-from engine.spectral_math import SpectralMathEngine, SENSOR_GSD_PRESETS, SpectralMetrics
-from engine.vision_agent import VisionAgent
-from engine.report_gen import PDFReportGenerator
-from engine.autonomous_radar import AnomalyRadarEngine
-from engine.pathfinding import PathfindingEngine
-from engine.audio_dispatch import AudioDispatchEngine
 
 
 # --------------------------------------------------------------------------------
@@ -852,7 +855,8 @@ def get_engines():
     vision_agent = VisionAgent()
     radar_engine = AnomalyRadarEngine()
     path_engine = PathfindingEngine(gsd_meters=10.0)
-    audio_engine = AudioDispatchEngine(output_dir="C:/Users/LENOVO/.gemini/antigravity-ide/brain/c20a7b3a-1fd5-4ffb-80f0-fa7994d2b06e/scratch/")
+    audio_dir = os.path.join(os.path.dirname(__file__), "sample_data", "audio_cache")
+    audio_engine = AudioDispatchEngine(output_dir=audio_dir)
     return math_engine, vision_agent, radar_engine, path_engine, audio_engine
 
 math_engine, vision_agent, radar_engine, path_engine, audio_engine = get_engines()

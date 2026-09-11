@@ -157,8 +157,9 @@ class PDFReportGenerator:
         elements = []
 
         # 1. Header Banner
-        timestamp_str = datetime.datetime.utcnow().strftime("%d-%b-%Y %H:%M:%S UTC")
-        ref_id = f"AAZHI-SAT-{datetime.datetime.utcnow().strftime('%Y%m%d%H%M')}"
+        now_dt = datetime.datetime.now(datetime.timezone.utc)
+        timestamp_str = now_dt.strftime("%d-%b-%Y %H:%M:%S UTC")
+        ref_id = f"AAZHI-SAT-{now_dt.strftime('%Y%m%d%H%M')}"
 
         elements.append(Paragraph("🛰️ AAZHI SATELLITE INTELLIGENCE BRIEFING", title_style))
         elements.append(

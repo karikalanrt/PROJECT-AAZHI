@@ -15,6 +15,7 @@ This module performs deterministic radiometric calculations on Earth Observation
 - False-color radiometric heatmaps, tactical alpha overlays, and GeoJSON vector generator
 """
 
+import io
 import json
 from dataclasses import dataclass, asdict
 from typing import Dict, Any, Tuple, Optional, List
@@ -27,6 +28,7 @@ try:
     HAS_TIFFFILE = True
 except ImportError:
     HAS_TIFFFILE = False
+
 
 
 SENSOR_GSD_PRESETS = {
