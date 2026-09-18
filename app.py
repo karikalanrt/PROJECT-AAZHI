@@ -21,6 +21,30 @@ import urllib.request
 from typing import Optional, Tuple
 
 import streamlit as st
+
+import base64
+def st_download_fix(label, data, file_name, mime, use_container_width=True, type='secondary'):
+    if isinstance(data, str):
+        data = data.encode('utf-8')
+    b64 = base64.b64encode(data).decode()
+    width_style = "width: 100%;" if use_container_width else ""
+    bg_color = "#ff4b4b" if type == "primary" else "#1e1e2d"
+    hover_bg = "#ff6b6b" if type == "primary" else "#2d2d3f"
+    text_color = "#ffffff" if type == "primary" else "#e2e8f0"
+    border = "1px solid #ff4b4b" if type == "primary" else "1px solid rgba(250, 250, 250, 0.2)"
+    hover_border = "1px solid #ff4b4b" if type == "primary" else "1px solid #3b82f6"
+    
+    html = f'''
+    <a href="data:{mime};base64,{b64}" download="{file_name}" style="text-decoration:none; display: block; {width_style}">
+        <div style="background-color: {bg_color}; color: {text_color}; border: {border}; border-radius: 0.5rem; padding: 0.35rem 1rem; cursor: pointer; font-size: 14px; text-align: center; font-family: sans-serif; transition: all 0.3s;" 
+        onmouseover="this.style.backgroundColor='{hover_bg}'; this.style.borderColor='{hover_border}';" 
+        onmouseout="this.style.backgroundColor='{bg_color}'; this.style.borderColor='{border}';">
+        {label}
+        </div>
+    </a>
+    '''
+    st.markdown(html, unsafe_allow_html=True)
+
 import streamlit.components.v1 as components
 import numpy as np
 import pandas as pd
@@ -899,7 +923,7 @@ with st.sidebar:
         unsafe_allow_html=True,
     )
     if installer_bytes:
-        st.download_button(
+        st_download_fix(
             label="⚡ Download 1-Click Auto-Installer (.BAT)",
             data=installer_bytes,
             file_name="Install_AAZHI.bat",
@@ -2459,7 +2483,7 @@ with tab5:
     # Row 3: Balanced Action Download Buttons
     dl_col1, dl_col2 = st.columns(2)
     with dl_col1:
-        st.download_button(
+        st_download_fix(
             label="📥 Download JSON Ground Truth Packet",
             data=packet_json_str,
             file_name=f"AAZHI_Downlink_{safe_region}.json",
@@ -2467,7 +2491,7 @@ with tab5:
             use_container_width=True,
         )
     with dl_col2:
-        st.download_button(
+        st_download_fix(
             label="📥 Download Raw Radio HEX Frame (.hex)",
             data=hex_full,
             file_name=f"AAZHI_Downlink_{safe_region}.hex",
@@ -2542,7 +2566,7 @@ with tab6:
         cap_output_str = geo_alert_data["cap_json"] if geo_alert_data else json.dumps({"status": "ALL_CLEAR", "message": "No critical disaster anomaly triggered."}, indent=2)
         st.code(cap_output_str, language="json")
         
-        st.download_button(
+        st_download_fix(
             label="📥 Download CAP 1.2 Alert JSON",
             data=cap_output_str,
             file_name=f"AAZHI_CAP_Alert_{safe_region}.json",
@@ -2640,7 +2664,7 @@ with tab7:
             geo_alert_info=geo_alert_data,
         )
         
-        st.download_button(
+        st_download_fix(
             label="📥 Download Tactical PDF Briefing",
             data=pdf_bytes,
             file_name=f"AAZHI_SAT_{safe_region}_Briefing.pdf",
@@ -2666,7 +2690,7 @@ with tab7:
         
         geojson_str = math_engine.export_geojson(metrics, region_label, active_coords)
         
-        st.download_button(
+        st_download_fix(
             label="📥 Download GeoJSON Layer",
             data=geojson_str,
             file_name=f"AAZHI_SAT_{safe_region}_AOI.geojson",
@@ -2692,7 +2716,7 @@ with tab7:
         csv_df = pd.DataFrame(math_engine.get_conservation_matrix_table(metrics))
         csv_str = "\ufeff" + csv_df.to_csv(index=False, encoding="utf-8")
 
-        st.download_button(
+        st_download_fix(
             label="📥 Download Telemetry CSV",
             data=csv_str.encode("utf-8"),
             file_name=f"AAZHI_SAT_{safe_region}_Telemetry.csv",
@@ -2744,7 +2768,7 @@ with tab7:
             }
             zip_file.writestr("safe_drone_corridor.geojson", json.dumps(geojson, indent=2))
             
-    st.download_button(
+    st_download_fix(
         label="📦 Export Offline Tactical Package (.ZIP)",
         data=zip_buffer.getvalue(),
         file_name=f"AAZHI_SAT_{safe_region}_GROUND_PACKAGE.zip",
@@ -3051,7 +3075,7 @@ with tab9:
         audio_kb = len(st.session_state['dispatch_audio_bytes']) // 1024
         st.success(f"✅ Full voice transmission file ({audio_kb} KB) ready. Press play below to listen or download:")
         st.audio(st.session_state["dispatch_audio_bytes"], format=st.session_state.get("dispatch_audio_format", "audio/mp3"))
-        st.download_button(
+        st_download_fix(
             label="⬇️ Download Spoken Audio File (.MP3 / .WAV)",
             data=st.session_state["dispatch_audio_bytes"],
             file_name=st.session_state.get("dispatch_audio_name", "tactical_dispatch.wav"),
