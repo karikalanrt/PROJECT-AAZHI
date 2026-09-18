@@ -32,17 +32,17 @@ class AudioDispatchEngine:
 
     def clean_script_for_tts(self, text: str) -> str:
         """Sanitizes script text for clean acoustic pronunciation."""
-        # Replace abbreviations and formatting
+        # Replace abbreviations with exact word boundaries
         text = text.replace(" / ", " ")
-        text = text.replace("AOI", "A-O-I")
-        text = text.replace("NDRF", "N-D-R-F")
-        text = text.replace("SDRF", "S-D-R-F")
-        text = text.replace("km²", " square kilometers ")
-        text = text.replace("Ha", " Hectares ")
-        text = text.replace("..", ". ")
-        # Remove any Markdown or brackets
-        text = re.sub(r'[*_#`\[\]]', '', text)
-        return " ".join(text.split())
+        text = re.sub(r'\bAOI\b', 'A-O-I', text)
+        text = re.sub(r'\bNDRF\b', 'N-D-R-F', text)
+        text = re.sub(r'\bSDRF\b', 'S-D-R-F', text)
+        text = re.sub(r'\bkm²\b', 'square kilometers', text)
+        text = re.sub(r'\bHa\b', 'Hectares', text)
+        text = re.sub(r'\bcoords\b', 'coordinates', text, flags=re.IGNORECASE)
+        text = re.sub(r'[*_#`\[\]"\']', '', text)
+        text = re.sub(r'\s+', ' ', text)
+        return text.strip()
 
     def generate_dispatch_script(self, alert_data: Dict[str, Any]) -> str:
         """
@@ -80,14 +80,24 @@ class AudioDispatchEngine:
 
         return self.clean_script_for_tts(raw_script)
 
-    def generate_audio(self, script: str, filename: str = "tactical_dispatch.mp3", force_offline: bool = False) -> str:
+    def generate_audio(self, script: str, filename: Optional[str] = None, force_offline: bool = False) -> str:
         """
         Generates genuine voice audio reading the complete script.
         Tries gTTS online -> pyttsx3 offline -> secondary gTTS.
         Returns the path to the verified audio file.
         """
+        import hashlib
         clean_text = self.clean_script_for_tts(script)
+        if not clean_text:
+            return ""
+
+        if not filename:
+            h = hashlib.md5(clean_text.encode('utf-8')).hexdigest()[:8]
+            filename = f"tactical_dispatch_{h}.mp3"
+
         output_path = os.path.join(self.output_dir, filename)
+        if os.path.exists(output_path) and os.path.getsize(output_path) > 2000:
+            return output_path
 
         # 1. Primary Online Neural TTS (gTTS)
         if not force_offline and HAS_GTTS:
@@ -109,10 +119,10 @@ class AudioDispatchEngine:
                 except Exception:
                     pass
 
-                offline_path = os.path.join(self.output_dir, "offline_" + filename.replace(".mp3", ".wav"))
+                offline_path = os.path.join(self.output_dir, filename.replace(".mp3", ".wav"))
                 engine = pyttsx3.init()
                 rate = engine.getProperty('rate')
-                engine.setProperty('rate', rate + 15)
+                engine.setProperty('rate', rate)
                 engine.save_to_file(clean_text, offline_path)
                 engine.runAndWait()
                 time.sleep(0.4)

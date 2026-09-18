@@ -2738,68 +2738,94 @@ with tab9:
     script = audio_engine.generate_dispatch_script(dispatch_data)
     st.info(f"**Transcript:**\n\n> {script}")
     
-    # ── 1. INSTANT BROWSER VOICE DISPATCH (Zero-Lag Neural Speech) ────────────
+    # ── 1. INSTANT BROWSER VOICE DISPATCH (Zero-Lag Neural Speech with Anti-Cutoff Fix) ────────────
     st.markdown("##### 🎙️ 1-Click Live Radio Broadcast")
-    clean_js_script = script.replace('"', '\\"').replace("'", "\\'")
+    import json
+    json_script = json.dumps(script)
     components.html(
         f"""
         <div style="background:#0f172a; border:1px solid #1e293b; border-radius:10px; padding:14px 18px; margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
             <div style="display:flex; align-items:center; gap:10px;">
-                <button id="playBtn" onclick="speakDispatch()" style="background:linear-gradient(135deg,#0284c7,#0369a1); color:#fff; border:none; border-radius:6px; padding:8px 18px; font-weight:700; font-size:13px; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:0 4px 12px rgba(2,132,199,0.3);">
+                <button id="playBtn" onclick="speakDispatch()" style="background:linear-gradient(135deg,#0284c7,#0369a1); color:#fff; border:none; border-radius:6px; padding:9px 20px; font-weight:700; font-size:13px; cursor:pointer; display:flex; align-items:center; gap:8px; box-shadow:0 4px 12px rgba(2,132,199,0.3);">
                     <span>🔊</span> Play Live Voice Dispatch
                 </button>
-                <button id="stopBtn" onclick="stopDispatch()" style="background:#1e293b; color:#94a3b8; border:1px solid #334155; border-radius:6px; padding:8px 14px; font-size:13px; cursor:pointer;">
+                <button id="stopBtn" onclick="stopDispatch()" style="background:#1e293b; color:#94a3b8; border:1px solid #334155; border-radius:6px; padding:9px 16px; font-size:13px; cursor:pointer;">
                     ⏹️ Stop
                 </button>
             </div>
-            <div id="statusLabel" style="font-family:monospace; font-size:11px; color:#38bdf8;">
+            <div id="statusLabel" style="font-family:monospace; font-size:12px; font-weight:600; color:#38bdf8;">
                 📻 READY FOR BROADCAST
             </div>
         </div>
         <script>
-        var synth = window.speechSynthesis;
+        var fullText = {json_script};
+        window._activeUtterances = [];
+        window._keepAliveTimer = null;
+
         function speakDispatch() {{
-            if (synth.speaking) {{
-                synth.cancel();
-            }}
-            var text = "{clean_js_script}";
-            var utter = new SpeechSynthesisUtterance(text);
-            utter.rate = 1.05;
-            utter.pitch = 0.95;
-            
-            // Try to find a clear English military-style voice
-            var voices = synth.getVoices();
+            window.speechSynthesis.cancel();
+            if (window._keepAliveTimer) clearInterval(window._keepAliveTimer);
+            window._activeUtterances = [];
+
+            var status = document.getElementById('statusLabel');
+            status.innerHTML = "🔴 TRANSMITTING DISPATCH...";
+            status.style.color = "#f87171";
+
+            // Split into sentences for zero-cutoff streaming playback
+            var sentences = fullText.match(/[^.!?]+[.!?]+/g) || [fullText];
+            var voices = window.speechSynthesis.getVoices();
+            var chosenVoice = null;
             for (var i = 0; i < voices.length; i++) {{
-                if (voices[i].lang.startsWith('en') && (voices[i].name.includes('David') || voices[i].name.includes('George') || voices[i].name.includes('Natural') || voices[i].name.includes('Male'))) {{
-                    utter.voice = voices[i];
+                if (voices[i].lang.startsWith('en') && (voices[i].name.includes('David') || voices[i].name.includes('George') || voices[i].name.includes('Natural') || voices[i].name.includes('Male') || voices[i].name.includes('English'))) {{
+                    chosenVoice = voices[i];
                     break;
                 }}
             }}
-            
-            var status = document.getElementById('statusLabel');
-            utter.onstart = function() {{
-                status.innerHTML = "🔴 TRANSMITTING DISPATCH...";
-                status.style.color = "#f87171";
-            }};
-            utter.onend = function() {{
-                status.innerHTML = "📻 TRANSMISSION COMPLETE";
-                status.style.color = "#4ade80";
-            }};
-            utter.onerror = function() {{
-                status.innerHTML = "📻 READY";
-                status.style.color = "#38bdf8";
-            }};
-            synth.speak(utter);
+
+            sentences.forEach(function(sentence, idx) {{
+                var utter = new SpeechSynthesisUtterance(sentence.trim());
+                utter.rate = 1.0;
+                utter.pitch = 0.95;
+                if (chosenVoice) utter.voice = chosenVoice;
+
+                if (idx === sentences.length - 1) {{
+                    utter.onend = function() {{
+                        status.innerHTML = "📻 TRANSMISSION COMPLETE";
+                        status.style.color = "#4ade80";
+                        if (window._keepAliveTimer) clearInterval(window._keepAliveTimer);
+                    }};
+                }}
+                utter.onerror = function() {{
+                    status.innerHTML = "📻 READY";
+                    status.style.color = "#38bdf8";
+                }};
+
+                window._activeUtterances.push(utter);
+                window.speechSynthesis.speak(utter);
+            }});
+
+            // Chromium Anti-Cutoff Keepalive Heartbeat
+            window._keepAliveTimer = setInterval(function() {{
+                if (window.speechSynthesis.speaking) {{
+                    window.speechSynthesis.pause();
+                    window.speechSynthesis.resume();
+                }} else {{
+                    clearInterval(window._keepAliveTimer);
+                }}
+            }}, 3500);
         }}
+
         function stopDispatch() {{
-            if (synth) synth.cancel();
+            window.speechSynthesis.cancel();
+            if (window._keepAliveTimer) clearInterval(window._keepAliveTimer);
+            window._activeUtterances = [];
             var status = document.getElementById('statusLabel');
             status.innerHTML = "📻 STOPPED";
             status.style.color = "#94a3b8";
         }}
         </script>
         """,
-        height=75
+        height=85
     )
 
     # ── 2. SERVER-SIDE MP3/WAV SYNTHESIS & FILE DOWNLOAD ─────────────────────
@@ -2830,7 +2856,8 @@ with tab9:
                 st.error("Server-side audio generation unavailable. Use the 1-Click Live Radio Broadcast above or check internet connection.")
 
     if "dispatch_audio_bytes" in st.session_state and st.session_state["dispatch_audio_bytes"]:
-        st.success(f"✅ Full voice transmission file ({len(st.session_state['dispatch_audio_bytes']) // 1024} KB) generated.")
+        audio_kb = len(st.session_state['dispatch_audio_bytes']) // 1024
+        st.success(f"✅ Full voice transmission file ({audio_kb} KB) ready. Press play below to listen:")
         st.audio(st.session_state["dispatch_audio_bytes"], format=st.session_state.get("dispatch_audio_format", "audio/mp3"))
         st.download_button(
             label="⬇️ Download Voice File (.MP3 / .WAV)",
