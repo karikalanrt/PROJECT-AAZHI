@@ -2546,10 +2546,12 @@ with tab7:
         zip_file.writestr(f"AAZHI_SAT_{safe_region}_AOI.geojson", geojson_str)
         
         # 3. Audio File (if it exists)
-        audio_path = os.path.join("C:/Users/LENOVO/.gemini/antigravity-ide/brain/c20a7b3a-1fd5-4ffb-80f0-fa7994d2b06e/scratch/", "tactical_dispatch.mp3")
-        if os.path.exists(audio_path):
-            with open(audio_path, "rb") as f:
-                zip_file.writestr("tactical_dispatch.mp3", f.read())
+        audio_cached = st.session_state.get("dispatch_audio_path")
+        if not audio_cached or not os.path.exists(audio_cached):
+            audio_cached = os.path.join(audio_engine.output_dir, "tactical_dispatch.mp3")
+        if os.path.exists(audio_cached):
+            with open(audio_cached, "rb") as f:
+                zip_file.writestr(os.path.basename(audio_cached), f.read())
                 
         # 4. Drone Path (if it exists)
         if "drone_path" in st.session_state:
@@ -2738,17 +2740,42 @@ with tab9:
     
     synth_mode = st.radio("Synthesis Engine", ["Online (gTTS - Natural)", "Offline (pyttsx3 - Air-Gapped)"], horizontal=True)
     
-    if st.button("\U0001f50a Synthesize Radio Transmission", use_container_width=True):
+    col_synth, col_clear = st.columns([3, 1])
+    with col_synth:
+        synth_btn = st.button("🔊 Synthesize Radio Transmission", use_container_width=True)
+    with col_clear:
+        if st.button("🔄 Clear Audio", use_container_width=True):
+            st.session_state.pop("dispatch_audio_bytes", None)
+            st.session_state.pop("dispatch_audio_path", None)
+            st.rerun()
+
+    if synth_btn:
         force_offline = "Offline" in synth_mode
         with st.spinner("Synthesizing encrypted voice transmission..."):
             audio_path = audio_engine.generate_audio(script, force_offline=force_offline)
             if audio_path and os.path.exists(audio_path):
-                st.success("Transmission synthesized successfully.")
-                st.audio(audio_path)
+                with open(audio_path, "rb") as f:
+                    audio_bytes = f.read()
+                st.session_state["dispatch_audio_bytes"] = audio_bytes
+                st.session_state["dispatch_audio_path"] = audio_path
+                st.session_state["dispatch_audio_format"] = "audio/wav" if audio_path.endswith(".wav") else "audio/mp3"
+                st.session_state["dispatch_audio_name"] = os.path.basename(audio_path)
             else:
-                st.error("Failed to synthesize audio. Check dependencies (gTTS or pyttsx3).")
+                st.error("Failed to synthesize audio. Check network connection for gTTS or pyttsx3 installation.")
+
+    if "dispatch_audio_bytes" in st.session_state and st.session_state["dispatch_audio_bytes"]:
+        st.success("✅ Transmission synthesized and ready for tactical broadcast.")
+        st.audio(st.session_state["dispatch_audio_bytes"], format=st.session_state.get("dispatch_audio_format", "audio/mp3"))
+        st.download_button(
+            label="⬇️ Download Voice Transmission (.MP3 / .WAV)",
+            data=st.session_state["dispatch_audio_bytes"],
+            file_name=st.session_state.get("dispatch_audio_name", "tactical_dispatch.mp3"),
+            mime=st.session_state.get("dispatch_audio_format", "audio/mp3"),
+            use_container_width=True
+        )
     
     st.markdown("</div>", unsafe_allow_html=True)
+
 
 
 # ================================================================================

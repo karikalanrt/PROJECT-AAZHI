@@ -1,7 +1,7 @@
 import os
 import time
 import logging
-from typing import Dict, Any
+from typing import Dict, Any, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -70,17 +70,26 @@ class AudioDispatchEngine:
         """
         output_path = os.path.join(self.output_dir, filename)
 
+        # 1. Try Online Neural TTS (gTTS)
         if not force_offline and HAS_GTTS:
             try:
                 tts = gTTS(text=script, lang='en', tld='co.in', slow=False)
                 tts.save(output_path)
-                return output_path
+                if os.path.exists(output_path) and os.path.getsize(output_path) > 500:
+                    return output_path
             except Exception as e:
-                logger.warning(f"gTTS online audio synthesis unavailable: {e}. Falling back to offline TTS.")
+                logger.warning(f"gTTS online audio synthesis failed: {e}. Falling back to offline TTS.")
 
-        # Air-gapped offline fallback using pyttsx3
+        # 2. Try Offline Air-Gapped TTS (pyttsx3) with Windows COM thread initialization
         if HAS_PYTTSX3:
             try:
+                # Initialize COM for Windows thread safety if running inside Streamlit / background threads
+                try:
+                    import pythoncom
+                    pythoncom.CoInitialize()
+                except Exception:
+                    pass
+
                 offline_path = os.path.join(self.output_dir, "offline_" + filename.replace(".mp3", ".wav"))
                 engine = pyttsx3.init()
                 rate = engine.getProperty('rate')
@@ -88,10 +97,21 @@ class AudioDispatchEngine:
                 engine.save_to_file(script, offline_path)
                 engine.runAndWait()
                 time.sleep(0.3)
-                if os.path.exists(offline_path):
+                if os.path.exists(offline_path) and os.path.getsize(offline_path) > 500:
                     return offline_path
             except Exception as e:
                 logger.error(f"pyttsx3 offline TTS failed: {e}")
 
+        # 3. If offline mode requested but pyttsx3 had an issue, fallback to gTTS
+        if HAS_GTTS:
+            try:
+                tts = gTTS(text=script, lang='en', tld='co.in', slow=False)
+                tts.save(output_path)
+                if os.path.exists(output_path) and os.path.getsize(output_path) > 500:
+                    return output_path
+            except Exception as e:
+                logger.error(f"Secondary gTTS fallback failed: {e}")
+
         return ""
+
 
