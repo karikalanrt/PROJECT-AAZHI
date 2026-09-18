@@ -23,7 +23,7 @@ from typing import Optional, Tuple
 import streamlit as st
 
 import base64
-def st_download_fix(label, data, file_name, mime, use_container_width=True, type='secondary'):
+def st_download_fix(label, data, file_name, mime, use_container_width=True, type='secondary', **kwargs):
     if isinstance(data, str):
         data = data.encode('utf-8')
     b64 = base64.b64encode(data).decode()
