@@ -2738,22 +2738,88 @@ with tab9:
     script = audio_engine.generate_dispatch_script(dispatch_data)
     st.info(f"**Transcript:**\n\n> {script}")
     
-    synth_mode = st.radio("Synthesis Engine", ["Online (gTTS - Natural)", "Offline (pyttsx3 - Air-Gapped)"], horizontal=True)
+    # ── 1. INSTANT BROWSER VOICE DISPATCH (Zero-Lag Neural Speech) ────────────
+    st.markdown("##### 🎙️ 1-Click Live Radio Broadcast")
+    clean_js_script = script.replace('"', '\\"').replace("'", "\\'")
+    components.html(
+        f"""
+        <div style="background:#0f172a; border:1px solid #1e293b; border-radius:10px; padding:14px 18px; margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+            <div style="display:flex; align-items:center; gap:10px;">
+                <button id="playBtn" onclick="speakDispatch()" style="background:linear-gradient(135deg,#0284c7,#0369a1); color:#fff; border:none; border-radius:6px; padding:8px 18px; font-weight:700; font-size:13px; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:0 4px 12px rgba(2,132,199,0.3);">
+                    <span>🔊</span> Play Live Voice Dispatch
+                </button>
+                <button id="stopBtn" onclick="stopDispatch()" style="background:#1e293b; color:#94a3b8; border:1px solid #334155; border-radius:6px; padding:8px 14px; font-size:13px; cursor:pointer;">
+                    ⏹️ Stop
+                </button>
+            </div>
+            <div id="statusLabel" style="font-family:monospace; font-size:11px; color:#38bdf8;">
+                📻 READY FOR BROADCAST
+            </div>
+        </div>
+        <script>
+        var synth = window.speechSynthesis;
+        function speakDispatch() {{
+            if (synth.speaking) {{
+                synth.cancel();
+            }}
+            var text = "{clean_js_script}";
+            var utter = new SpeechSynthesisUtterance(text);
+            utter.rate = 1.05;
+            utter.pitch = 0.95;
+            
+            // Try to find a clear English military-style voice
+            var voices = synth.getVoices();
+            for (var i = 0; i < voices.length; i++) {{
+                if (voices[i].lang.startsWith('en') && (voices[i].name.includes('David') || voices[i].name.includes('George') || voices[i].name.includes('Natural') || voices[i].name.includes('Male'))) {{
+                    utter.voice = voices[i];
+                    break;
+                }}
+            }}
+            
+            var status = document.getElementById('statusLabel');
+            utter.onstart = function() {{
+                status.innerHTML = "🔴 TRANSMITTING DISPATCH...";
+                status.style.color = "#f87171";
+            }};
+            utter.onend = function() {{
+                status.innerHTML = "📻 TRANSMISSION COMPLETE";
+                status.style.color = "#4ade80";
+            }};
+            utter.onerror = function() {{
+                status.innerHTML = "📻 READY";
+                status.style.color = "#38bdf8";
+            }};
+            synth.speak(utter);
+        }}
+        function stopDispatch() {{
+            if (synth) synth.cancel();
+            var status = document.getElementById('statusLabel');
+            status.innerHTML = "📻 STOPPED";
+            status.style.color = "#94a3b8";
+        }}
+        </script>
+        """,
+        height=75
+    )
+
+    # ── 2. SERVER-SIDE MP3/WAV SYNTHESIS & FILE DOWNLOAD ─────────────────────
+    st.markdown("##### 💾 Server-Side Audio File Generator (.MP3 / .WAV)")
+    synth_mode = st.radio("Synthesis Engine", ["Online (gTTS - High Quality)", "Offline (pyttsx3 - Air-Gapped)"], horizontal=True)
     
     col_synth, col_clear = st.columns([3, 1])
     with col_synth:
-        synth_btn = st.button("🔊 Synthesize Radio Transmission", use_container_width=True)
+        synth_btn = st.button("⚡ Generate Audio File", use_container_width=True)
     with col_clear:
-        if st.button("🔄 Clear Audio", use_container_width=True):
+        if st.button("🔄 Clear File", use_container_width=True):
             st.session_state.pop("dispatch_audio_bytes", None)
             st.session_state.pop("dispatch_audio_path", None)
             st.rerun()
 
     if synth_btn:
         force_offline = "Offline" in synth_mode
-        with st.spinner("Synthesizing encrypted voice transmission..."):
+        with st.spinner("Synthesizing full voice transmission file..."):
             audio_path = audio_engine.generate_audio(script, force_offline=force_offline)
-            if audio_path and os.path.exists(audio_path):
+            if audio_path and os.path.exists(audio_path) and os.path.getsize(audio_path) > 1000:
                 with open(audio_path, "rb") as f:
                     audio_bytes = f.read()
                 st.session_state["dispatch_audio_bytes"] = audio_bytes
@@ -2761,13 +2827,13 @@ with tab9:
                 st.session_state["dispatch_audio_format"] = "audio/wav" if audio_path.endswith(".wav") else "audio/mp3"
                 st.session_state["dispatch_audio_name"] = os.path.basename(audio_path)
             else:
-                st.error("Failed to synthesize audio. Check network connection for gTTS or pyttsx3 installation.")
+                st.error("Server-side audio generation unavailable. Use the 1-Click Live Radio Broadcast above or check internet connection.")
 
     if "dispatch_audio_bytes" in st.session_state and st.session_state["dispatch_audio_bytes"]:
-        st.success("✅ Transmission synthesized and ready for tactical broadcast.")
+        st.success(f"✅ Full voice transmission file ({len(st.session_state['dispatch_audio_bytes']) // 1024} KB) generated.")
         st.audio(st.session_state["dispatch_audio_bytes"], format=st.session_state.get("dispatch_audio_format", "audio/mp3"))
         st.download_button(
-            label="⬇️ Download Voice Transmission (.MP3 / .WAV)",
+            label="⬇️ Download Voice File (.MP3 / .WAV)",
             data=st.session_state["dispatch_audio_bytes"],
             file_name=st.session_state.get("dispatch_audio_name", "tactical_dispatch.mp3"),
             mime=st.session_state.get("dispatch_audio_format", "audio/mp3"),
@@ -2775,6 +2841,7 @@ with tab9:
         )
     
     st.markdown("</div>", unsafe_allow_html=True)
+
 
 
 

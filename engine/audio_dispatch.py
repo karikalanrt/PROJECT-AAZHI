@@ -1,10 +1,7 @@
 import os
 import time
 import logging
-import math
-import struct
-import wave
-import random
+import re
 from typing import Dict, Any, Optional
 
 logger = logging.getLogger(__name__)
@@ -26,13 +23,26 @@ class AudioDispatchEngine:
     """
     Tactical Audio Dispatch Engine for Project Aazhi.
     Converts automated geo-alert and disaster telemetry into military-grade phonetic audio briefings.
-    Supports online multi-lingual neural synthesis (gTTS), offline air-gapped TTS (pyttsx3),
-    and built-in zero-dependency tactical acoustic carrier fallback.
+    Supports online neural synthesis (gTTS) and offline air-gapped TTS (pyttsx3).
     """
 
     def __init__(self, output_dir: str):
         self.output_dir = output_dir
         os.makedirs(self.output_dir, exist_ok=True)
+
+    def clean_script_for_tts(self, text: str) -> str:
+        """Sanitizes script text for clean acoustic pronunciation."""
+        # Replace abbreviations and formatting
+        text = text.replace(" / ", " ")
+        text = text.replace("AOI", "A-O-I")
+        text = text.replace("NDRF", "N-D-R-F")
+        text = text.replace("SDRF", "S-D-R-F")
+        text = text.replace("km²", " square kilometers ")
+        text = text.replace("Ha", " Hectares ")
+        text = text.replace("..", ". ")
+        # Remove any Markdown or brackets
+        text = re.sub(r'[*_#`\[\]]', '', text)
+        return " ".join(text.split())
 
     def generate_dispatch_script(self, alert_data: Dict[str, Any]) -> str:
         """
@@ -48,7 +58,7 @@ class AudioDispatchEngine:
         is_nominal = "GREEN" in severity.upper() or "NOMINAL" in severity.upper()
 
         if is_nominal:
-            return (
+            raw_script = (
                 f"Attention all units. AAZHI SATELLITE COMMAND DISPATCH. "
                 f"Status: Routine Surveillance. "
                 f"Target sector is {sector}. "
@@ -57,62 +67,40 @@ class AudioDispatchEngine:
                 f"Action: {action}. "
                 f"Maintain secure comms. Aazhi Command out."
             )
+        else:
+            raw_script = (
+                f"Attention all units. AAZHI SATELLITE COMMAND DISPATCH. "
+                f"Code {severity}. Threat identified as {threat}. "
+                f"Target sector is {sector}. "
+                f"Coordinates: {coords[0]:.2f} North, {coords[1]:.2f} East. "
+                f"Estimated population at risk: {pop:,} civilians. "
+                f"Immediate Action: {action}. "
+                f"Maintain secure comms. Aazhi Command out."
+            )
 
-        return (
-            f"Attention all units. AAZHI SATELLITE COMMAND DISPATCH. "
-            f"Code {severity}. Threat identified as {threat}. "
-            f"Target sector is {sector}. "
-            f"Coordinates: {coords[0]:.2f} North, {coords[1]:.2f} East. "
-            f"Estimated population at risk: {pop:,} civilians. "
-            f"Immediate Action: {action}. "
-            f"Maintain secure comms. Aazhi Command out."
-        )
-
-    def _generate_tactical_radio_fallback(self, output_path: str, duration_sec: float = 4.5) -> str:
-        """
-        Generates standard tactical radio transmission tones (military roger beep + telemetry carrier)
-        using standard library wave module (zero dependencies).
-        """
-        sample_rate = 22050
-        n_samples = int(sample_rate * duration_sec)
-        with wave.open(output_path, "w") as wav_file:
-            wav_file.setnchannels(1)
-            wav_file.setsampwidth(2)
-            wav_file.setframerate(sample_rate)
-            for i in range(n_samples):
-                t = i / sample_rate
-                if t < 0.25:
-                    sample = int(14000 * math.sin(2 * math.pi * 880 * t))
-                elif t < 0.50:
-                    sample = int(16000 * math.sin(2 * math.pi * 1200 * t))
-                elif t > duration_sec - 0.35:
-                    sample = int(14000 * math.sin(2 * math.pi * 880 * t))
-                else:
-                    carrier = math.sin(2 * math.pi * 520 * t) * 7000
-                    noise = (random.random() * 2 - 1) * 2000
-                    sample = int(carrier + noise)
-                wav_file.writeframes(struct.pack('<h', max(-32767, min(32767, sample))))
-        return output_path
+        return self.clean_script_for_tts(raw_script)
 
     def generate_audio(self, script: str, filename: str = "tactical_dispatch.mp3", force_offline: bool = False) -> str:
         """
-        Generates tactical audio file using gTTS (online) or pyttsx3 (air-gapped offline fallback).
-        Returns the absolute filepath to the created audio file.
+        Generates genuine voice audio reading the complete script.
+        Tries gTTS online -> pyttsx3 offline -> secondary gTTS.
+        Returns the path to the verified audio file.
         """
+        clean_text = self.clean_script_for_tts(script)
         output_path = os.path.join(self.output_dir, filename)
 
-        # 1. Try Online Neural TTS (gTTS) with multi-domain fallback
+        # 1. Primary Online Neural TTS (gTTS)
         if not force_offline and HAS_GTTS:
-            for tld in ['com', 'co.in', 'co.uk']:
+            for tld in ['com', 'co.in', 'co.uk', 'ca']:
                 try:
-                    tts = gTTS(text=script, lang='en', tld=tld, slow=False)
+                    tts = gTTS(text=clean_text, lang='en', tld=tld, slow=False)
                     tts.save(output_path)
-                    if os.path.exists(output_path) and os.path.getsize(output_path) > 500:
+                    if os.path.exists(output_path) and os.path.getsize(output_path) > 2000:
                         return output_path
                 except Exception as e:
-                    logger.warning(f"gTTS ({tld}) failed: {e}")
+                    logger.warning(f"gTTS ({tld}) attempt failed: {e}")
 
-        # 2. Try Offline Air-Gapped TTS (pyttsx3)
+        # 2. Offline Air-Gapped SAPI5 / eSpeak TTS (pyttsx3)
         if HAS_PYTTSX3:
             try:
                 try:
@@ -124,35 +112,27 @@ class AudioDispatchEngine:
                 offline_path = os.path.join(self.output_dir, "offline_" + filename.replace(".mp3", ".wav"))
                 engine = pyttsx3.init()
                 rate = engine.getProperty('rate')
-                engine.setProperty('rate', rate + 20)
-                engine.save_to_file(script, offline_path)
+                engine.setProperty('rate', rate + 15)
+                engine.save_to_file(clean_text, offline_path)
                 engine.runAndWait()
-                time.sleep(0.3)
-                if os.path.exists(offline_path) and os.path.getsize(offline_path) > 500:
+                time.sleep(0.4)
+                if os.path.exists(offline_path) and os.path.getsize(offline_path) > 2000:
                     return offline_path
             except Exception as e:
-                logger.error(f"pyttsx3 offline TTS failed: {e}")
+                logger.error(f"pyttsx3 offline synthesis failed: {e}")
 
-        # 3. Secondary gTTS attempt if offline was forced but pyttsx3 failed
-        if force_offline and HAS_GTTS:
+        # 3. Fallback to gTTS default if pyttsx3 failed
+        if HAS_GTTS:
             try:
-                tts = gTTS(text=script, lang='en', tld='com', slow=False)
+                tts = gTTS(text=clean_text, lang='en')
                 tts.save(output_path)
-                if os.path.exists(output_path) and os.path.getsize(output_path) > 500:
+                if os.path.exists(output_path) and os.path.getsize(output_path) > 2000:
                     return output_path
             except Exception as e:
                 logger.error(f"Secondary gTTS fallback failed: {e}")
 
-        # 4. Zero-Failure Tactical Acoustic Carrier Fallback (Built-in Waveform)
-        try:
-            fallback_wav = os.path.join(self.output_dir, "tactical_carrier_" + filename.replace(".mp3", ".wav"))
-            self._generate_tactical_radio_fallback(fallback_wav)
-            if os.path.exists(fallback_wav) and os.path.getsize(fallback_wav) > 500:
-                return fallback_wav
-        except Exception as e:
-            logger.error(f"Tactical wave fallback failed: {e}")
-
         return ""
+
 
 
 
