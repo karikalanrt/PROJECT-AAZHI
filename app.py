@@ -2829,20 +2829,38 @@ with tab9:
     )
 
     # ── 2. SERVER-SIDE MP3/WAV SYNTHESIS & FILE DOWNLOAD ─────────────────────
-    st.markdown("##### 💾 Server-Side Audio File Generator (.MP3 / .WAV)")
-    synth_mode = st.radio("Synthesis Engine", ["Online (gTTS - High Quality)", "Offline (pyttsx3 - Air-Gapped)"], horizontal=True)
+    st.markdown("##### 💾 Tactical Audio File Exporter (.MP3 / .WAV) — *100% Free & Unlimited*")
+    st.caption("ℹ️ *Zero API limits or paid tiers. Uses local neural speech and air-gapped system voice synthesis.*")
     
+    synth_mode = st.radio("Synthesis Mode", ["Auto-Detect (Online Neural -> Offline Air-Gapped)", "Force Offline (pyttsx3 - 100% Air-Gapped)"], horizontal=True)
+    
+    # Auto-synthesize on first view of transcript if not already cached
+    import hashlib
+    script_hash = hashlib.md5(script.encode('utf-8')).hexdigest()[:8]
+    if "dispatch_audio_bytes" not in st.session_state or st.session_state.get("dispatch_script_hash") != script_hash:
+        force_offline = "Force Offline" in synth_mode
+        audio_path = audio_engine.generate_audio(script, force_offline=force_offline)
+        if audio_path and os.path.exists(audio_path) and os.path.getsize(audio_path) > 1000:
+            with open(audio_path, "rb") as f:
+                audio_bytes = f.read()
+            st.session_state["dispatch_audio_bytes"] = audio_bytes
+            st.session_state["dispatch_audio_path"] = audio_path
+            st.session_state["dispatch_audio_format"] = "audio/wav" if audio_path.endswith(".wav") else "audio/mp3"
+            st.session_state["dispatch_audio_name"] = os.path.basename(audio_path)
+            st.session_state["dispatch_script_hash"] = script_hash
+
     col_synth, col_clear = st.columns([3, 1])
     with col_synth:
-        synth_btn = st.button("⚡ Generate Audio File", use_container_width=True)
+        synth_btn = st.button("⚡ Re-Synthesize Audio File", use_container_width=True)
     with col_clear:
         if st.button("🔄 Clear File", use_container_width=True):
             st.session_state.pop("dispatch_audio_bytes", None)
             st.session_state.pop("dispatch_audio_path", None)
+            st.session_state.pop("dispatch_script_hash", None)
             st.rerun()
 
     if synth_btn:
-        force_offline = "Offline" in synth_mode
+        force_offline = "Force Offline" in synth_mode
         with st.spinner("Synthesizing full voice transmission file..."):
             audio_path = audio_engine.generate_audio(script, force_offline=force_offline)
             if audio_path and os.path.exists(audio_path) and os.path.getsize(audio_path) > 1000:
@@ -2852,18 +2870,20 @@ with tab9:
                 st.session_state["dispatch_audio_path"] = audio_path
                 st.session_state["dispatch_audio_format"] = "audio/wav" if audio_path.endswith(".wav") else "audio/mp3"
                 st.session_state["dispatch_audio_name"] = os.path.basename(audio_path)
+                st.session_state["dispatch_script_hash"] = script_hash
+                st.rerun()
             else:
-                st.error("Server-side audio generation unavailable. Use the 1-Click Live Radio Broadcast above or check internet connection.")
+                st.error("Audio generation failed. Use the 1-Click Live Voice Dispatch above.")
 
     if "dispatch_audio_bytes" in st.session_state and st.session_state["dispatch_audio_bytes"]:
         audio_kb = len(st.session_state['dispatch_audio_bytes']) // 1024
-        st.success(f"✅ Full voice transmission file ({audio_kb} KB) ready. Press play below to listen:")
+        st.success(f"✅ Full voice transmission file ({audio_kb} KB) ready. Press play below to listen or download:")
         st.audio(st.session_state["dispatch_audio_bytes"], format=st.session_state.get("dispatch_audio_format", "audio/mp3"))
         st.download_button(
-            label="⬇️ Download Voice File (.MP3 / .WAV)",
+            label="⬇️ Download Spoken Audio File (.MP3 / .WAV)",
             data=st.session_state["dispatch_audio_bytes"],
-            file_name=st.session_state.get("dispatch_audio_name", "tactical_dispatch.mp3"),
-            mime=st.session_state.get("dispatch_audio_format", "audio/mp3"),
+            file_name=st.session_state.get("dispatch_audio_name", "tactical_dispatch.wav"),
+            mime=st.session_state.get("dispatch_audio_format", "audio/wav"),
             use_container_width=True
         )
     

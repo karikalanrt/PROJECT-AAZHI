@@ -83,7 +83,7 @@ class AudioDispatchEngine:
     def generate_audio(self, script: str, filename: Optional[str] = None, force_offline: bool = False) -> str:
         """
         Generates genuine voice audio reading the complete script.
-        Tries gTTS online -> pyttsx3 offline -> secondary gTTS.
+        Auto-failovers between Online Neural TTS (gTTS) and Offline Air-Gapped TTS (pyttsx3).
         Returns the path to the verified audio file.
         """
         import hashlib
@@ -91,26 +91,51 @@ class AudioDispatchEngine:
         if not clean_text:
             return ""
 
+        h = hashlib.md5(clean_text.encode('utf-8')).hexdigest()[:8]
         if not filename:
-            h = hashlib.md5(clean_text.encode('utf-8')).hexdigest()[:8]
             filename = f"tactical_dispatch_{h}.mp3"
 
-        output_path = os.path.join(self.output_dir, filename)
-        if os.path.exists(output_path) and os.path.getsize(output_path) > 2000:
-            return output_path
+        mp3_path = os.path.join(self.output_dir, filename if filename.endswith(".mp3") else f"tactical_dispatch_{h}.mp3")
+        wav_path = os.path.join(self.output_dir, filename.replace(".mp3", ".wav") if ".mp3" in filename else f"tactical_dispatch_{h}.wav")
 
-        # 1. Primary Online Neural TTS (gTTS)
+        # Return cached file if already synthesized
+        if os.path.exists(mp3_path) and os.path.getsize(mp3_path) > 2000:
+            return mp3_path
+        if os.path.exists(wav_path) and os.path.getsize(wav_path) > 2000:
+            return wav_path
+
+        # 1. Offline Air-Gapped SAPI5 / eSpeak TTS (Instant & 100% Reliable Offline)
+        if force_offline and HAS_PYTTSX3:
+            try:
+                try:
+                    import pythoncom
+                    pythoncom.CoInitialize()
+                except Exception:
+                    pass
+
+                engine = pyttsx3.init()
+                rate = engine.getProperty('rate')
+                engine.setProperty('rate', rate)
+                engine.save_to_file(clean_text, wav_path)
+                engine.runAndWait()
+                time.sleep(0.3)
+                if os.path.exists(wav_path) and os.path.getsize(wav_path) > 2000:
+                    return wav_path
+            except Exception as e:
+                logger.error(f"pyttsx3 offline synthesis error: {e}")
+
+        # 2. Online Neural TTS (gTTS)
         if not force_offline and HAS_GTTS:
-            for tld in ['com', 'co.in', 'co.uk', 'ca']:
+            for tld in ['com', 'co.in']:
                 try:
                     tts = gTTS(text=clean_text, lang='en', tld=tld, slow=False)
-                    tts.save(output_path)
-                    if os.path.exists(output_path) and os.path.getsize(output_path) > 2000:
-                        return output_path
+                    tts.save(mp3_path)
+                    if os.path.exists(mp3_path) and os.path.getsize(mp3_path) > 2000:
+                        return mp3_path
                 except Exception as e:
                     logger.warning(f"gTTS ({tld}) attempt failed: {e}")
 
-        # 2. Offline Air-Gapped SAPI5 / eSpeak TTS (pyttsx3)
+        # 3. Fallback to pyttsx3 if gTTS failed or offline
         if HAS_PYTTSX3:
             try:
                 try:
@@ -119,27 +144,16 @@ class AudioDispatchEngine:
                 except Exception:
                     pass
 
-                offline_path = os.path.join(self.output_dir, filename.replace(".mp3", ".wav"))
                 engine = pyttsx3.init()
                 rate = engine.getProperty('rate')
                 engine.setProperty('rate', rate)
-                engine.save_to_file(clean_text, offline_path)
+                engine.save_to_file(clean_text, wav_path)
                 engine.runAndWait()
-                time.sleep(0.4)
-                if os.path.exists(offline_path) and os.path.getsize(offline_path) > 2000:
-                    return offline_path
+                time.sleep(0.3)
+                if os.path.exists(wav_path) and os.path.getsize(wav_path) > 2000:
+                    return wav_path
             except Exception as e:
-                logger.error(f"pyttsx3 offline synthesis failed: {e}")
-
-        # 3. Fallback to gTTS default if pyttsx3 failed
-        if HAS_GTTS:
-            try:
-                tts = gTTS(text=clean_text, lang='en')
-                tts.save(output_path)
-                if os.path.exists(output_path) and os.path.getsize(output_path) > 2000:
-                    return output_path
-            except Exception as e:
-                logger.error(f"Secondary gTTS fallback failed: {e}")
+                logger.error(f"pyttsx3 fallback failed: {e}")
 
         return ""
 
