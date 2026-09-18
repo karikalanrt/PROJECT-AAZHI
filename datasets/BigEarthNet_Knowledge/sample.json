@@ -1,0 +1,20 @@
+{
+    "dataset": "BigEarthNet",
+    "version": "1.0",
+    "classes": [
+        "Continuous urban fabric",
+        "Discontinuous urban fabric",
+        "Industrial or commercial units",
+        "Arable land",
+        "Permanent crops",
+        "Pastures",
+        "Broad-leaved forest",
+        "Coniferous forest",
+        "Mixed forest",
+        "Water bodies",
+        "Coastal lagoons",
+        "Estuaries",
+        "Sea and ocean"
+    ],
+    "context": "BigEarthNet is a large-scale dataset for remote sensing image understanding, consisting of Sentinel-2 image patches with multi-label land-cover annotations."
+}

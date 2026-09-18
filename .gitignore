@@ -25,3 +25,7 @@ secrets.toml
 scratch/
 *.tmp
 *.log
+
+# Cache Data
+sample_data/audio_cache/
+sample_data/live_cache/

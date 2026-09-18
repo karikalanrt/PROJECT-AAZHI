@@ -1,0 +1,7 @@
+{
+    "dataset": "BigEarthNet & VRSBench",
+    "version": "2.0-SIH",
+    "context": "This is a comprehensive multimodal remote sensing dataset containing Sentinel-1 SAR and Sentinel-2 multispectral imagery. It includes fine-grained labels for continuous urban fabric, arable land, pastures, and water bodies.",
+    "task": "Vision-Language Adaptation for Disaster Management",
+    "classes": ["Urban", "Water", "Forest", "Agriculture", "Barren"]
+}

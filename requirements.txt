@@ -10,3 +10,4 @@ pandas>=2.1.0
 reportlab>=4.0.9
 requests>=2.31.0
 streamlit-image-comparison>=0.0.4
+twilio>=9.0.0

@@ -908,8 +908,45 @@ with st.sidebar:
             help="Downloads the auto-installer script to your Downloads folder.",
         )
     st.markdown("<hr style='margin:10px 0;border-color:#1e293b;'/>", unsafe_allow_html=True)
-    
-    # Section 1: Constellation & Sensor Preset
+
+    # ── Navigation: set default page to AI chatbot ────────────────────────────
+    if "app_page" not in st.session_state:
+        st.session_state["app_page"] = "ai"
+
+    if st.session_state["app_page"] == "ai":
+        st.markdown(
+            """<div style='background:linear-gradient(135deg,rgba(56,189,248,0.06),rgba(15,23,42,0.9));border:1px solid rgba(56,189,248,0.2);border-radius:8px;padding:12px;margin-bottom:10px;'>
+            <div style='font-size:12px;font-weight:700;color:#38bdf8;margin-bottom:4px;'>🛰️ AAZHI SatQuery AI</div>
+            <div style='font-size:11px;color:#94a3b8;line-height:1.5;'>Upload satellite imagery and ask anything in natural language. Single Image, Cross-modal Pair, and Bi-temporal analysis supported.</div>
+            </div>""",
+            unsafe_allow_html=True,
+        )
+        if st.button("🌍 Open Tactical Disaster Dashboard", use_container_width=True, type="primary", key="goto_disaster"):
+            st.session_state["app_page"] = "disaster"
+            st.rerun()
+
+        st.markdown("<hr style='margin:8px 0;border-color:#1e293b;'/>", unsafe_allow_html=True)
+
+        # Chat history controls
+        _msg_count = len([m for m in st.session_state.get("chat_messages", []) if m["role"] == "user"])
+        st.markdown(
+            f"""<div style='font-size:11px;color:#64748b;margin-bottom:6px;'>
+            💬 <b style='color:#94a3b8;'>Chat History</b> &nbsp;·&nbsp; {_msg_count} question{"s" if _msg_count != 1 else ""} asked
+            </div>""",
+            unsafe_allow_html=True,
+        )
+        if st.button("🗑️ Clear Chat History", use_container_width=True, key="clear_chat"):
+            st.session_state["chat_messages"] = [
+                {"role": "assistant", "content": "👋 Chat cleared. I am **AAZHI SatQuery AI**. Upload a satellite image and ask me anything."}
+            ]
+            st.rerun()
+    else:
+        if st.button("💬 Back to SatQuery AI", use_container_width=True, key="goto_ai"):
+            st.session_state["app_page"] = "ai"
+            st.rerun()
+        st.markdown("<hr style='margin:8px 0;border-color:#1e293b;'/>", unsafe_allow_html=True)
+
+    # Section 1: Constellation & Sensor Preset (only shown in disaster mode — but always computed for safety)
     st.markdown("<div class='sidebar-section-hdr'>🛰️ Sensor & GSD Scale</div>", unsafe_allow_html=True)
     
     preset_choice = st.selectbox(
@@ -1305,9 +1342,144 @@ with st.sidebar:
     )
 
 
-# --------------------------------------------------------------------------------
-# MAIN COMMAND CENTER INTERFACE
-# --------------------------------------------------------------------------------
+
+# ================================================================================
+# SATQUERY AI ASSISTANT — DEFAULT CHATBOT PAGE (main area render)
+# ================================================================================
+if st.session_state.get("app_page", "ai") == "ai":
+    _ollama_ok = vision_agent.ollama_manager.is_healthy if hasattr(vision_agent, 'ollama_manager') else False
+    _cloud_key = bool(getattr(vision_agent, 'cloud_api_key', None))
+
+    st.markdown(
+        """<div style="display:flex;align-items:center;gap:14px;padding:20px 0 16px 0;border-bottom:1px solid #1e293b;margin-bottom:24px;">
+        <div style="font-size:42px;">🛰️</div>
+        <div>
+            <div style="font-size:26px;font-weight:800;color:#38bdf8;letter-spacing:0.5px;">AAZHI SatQuery AI</div>
+            <div style="font-size:13px;color:#64748b;margin-top:3px;">Conversational Earth Observation Intelligence — Upload satellite imagery and ask anything in natural language</div>
+        </div></div>""",
+        unsafe_allow_html=True,
+    )
+
+    _upload_mode = st.radio(
+        "📡 Select Analysis Mode:",
+        ["🛰️ Single Image", "🔄 Cross-Modal Pair (Two Sensors)", "⏱️ Bi-Temporal Pair (Before & After)"],
+        index=0,
+        horizontal=True,
+        key="cu_mode",
+    )
+
+    _img_primary = None
+    _img_secondary = None
+
+    if _upload_mode == "🛰️ Single Image":
+        _uf = st.file_uploader("Upload Satellite Image (JPG / PNG / GeoTIFF)", type=["jpg","jpeg","png","tif","tiff"], key="cu_single")
+        if _uf: _img_primary = _uf
+    elif _upload_mode == "🔄 Cross-Modal Pair (Two Sensors)":
+        _col1, _col2 = st.columns(2)
+        with _col1:
+            _uf1 = st.file_uploader("🌈 Optical / Sensor A", type=["jpg","jpeg","png","tif","tiff"], key="cu_cma")
+            if _uf1: _img_primary = _uf1
+        with _col2:
+            _uf2 = st.file_uploader("📡 SAR / Sensor B", type=["jpg","jpeg","png","tif","tiff"], key="cu_cmb")
+            if _uf2: _img_secondary = _uf2
+    else:
+        _col1, _col2 = st.columns(2)
+        with _col1:
+            _uf1 = st.file_uploader("📅 Before Image (T1)", type=["jpg","jpeg","png","tif","tiff"], key="cu_bta")
+            if _uf1: _img_primary = _uf1
+        with _col2:
+            _uf2 = st.file_uploader("📅 After Image (T2)", type=["jpg","jpeg","png","tif","tiff"], key="cu_btb")
+            if _uf2: _img_secondary = _uf2
+
+    if _img_primary or _img_secondary:
+        st.markdown("<hr style='border-color:#1e293b;margin:12px 0;'/>", unsafe_allow_html=True)
+        _pc = st.columns(2 if _img_secondary else 1)
+        with _pc[0]:
+            if _img_primary:
+                _rb = _img_primary.read(); _img_primary.seek(0)
+                st.image(Image.open(io.BytesIO(_rb)).convert("RGB"), caption="Primary Image", use_container_width=True)
+        if _img_secondary and len(_pc) > 1:
+            with _pc[1]:
+                _rb2 = _img_secondary.read(); _img_secondary.seek(0)
+                _lbl = "SAR / Sensor B" if "Cross" in _upload_mode else "After Image (T2)"
+                st.image(Image.open(io.BytesIO(_rb2)).convert("RGB"), caption=_lbl, use_container_width=True)
+        st.markdown("<hr style='border-color:#1e293b;margin:12px 0;'/>", unsafe_allow_html=True)
+
+    if "chat_messages" not in st.session_state:
+        st.session_state["chat_messages"] = [
+            {"role": "assistant", "content": "👋 I am **AAZHI SatQuery AI**. Upload a satellite image above and ask me anything — hazard detection, vegetation analysis, flood mapping, change detection, or any geospatial question."}
+        ]
+
+    for _m in st.session_state["chat_messages"]:
+        with st.chat_message(_m["role"]):
+            st.markdown(_m["content"])
+
+    _user_input = st.chat_input("Ask a question about the uploaded satellite image...")
+
+    if _user_input and _user_input.strip():
+        if not _img_primary:
+            # For general questions (no image needed), answer directly
+            _uq = _user_input.strip()
+            st.session_state["chat_messages"].append({"role": "user", "content": _uq})
+            with st.chat_message("user"):
+                st.markdown(_uq)
+            with st.chat_message("assistant"):
+                # Check if it's a simple general question
+                _lower = _uq.lower()
+                _is_general = any(w in _lower for w in ["who are you", "what are you", "which model", "how are you", "hello", "hi", "hey", "what can you do", "help", "your name", "tell me about"])
+                if _is_general:
+                    st.markdown("I am **AAZHI SatQuery AI**, a Conversational Earth Observation Intelligence system. I use **Qwen2.5-VL** (offline) or **Gemini Vision** (cloud) as my AI backbone, combined with the AAZHI SpectralMathEngine for deterministic satellite image analysis.\n\n**To get started:** Upload a satellite image using one of the 3 modes above (Single Image, Cross-Modal Pair, or Bi-Temporal Pair), then ask me anything!")
+                    st.session_state["chat_messages"].append({"role": "assistant", "content": "I am **AAZHI SatQuery AI**, a Conversational Earth Observation Intelligence system. I use **Qwen2.5-VL** (offline) or **Gemini Vision** (cloud) as my AI backbone, combined with the AAZHI SpectralMathEngine for deterministic satellite image analysis.\n\n**To get started:** Upload a satellite image using one of the 3 modes above (Single Image, Cross-Modal Pair, or Bi-Temporal Pair), then ask me anything!"})
+                else:
+                    st.warning("⚠️ Please upload a satellite image first, then ask your question.")
+        else:
+            _uq = _user_input.strip()
+            st.session_state["chat_messages"].append({"role": "user", "content": _uq})
+            with st.chat_message("user"):
+                st.markdown(_uq)
+            with st.chat_message("assistant"):
+                _rph = st.empty()
+                _spin = "🤖 Qwen2.5-VL analyzing..." if _ollama_ok else ("☁️ Gemini Vision analyzing..." if _cloud_key else "🛰️ Neural Engine processing...")
+                with st.spinner(_spin):
+                    try:
+                        _rb = _img_primary.read(); _img_primary.seek(0)
+                        _pil = Image.open(io.BytesIO(_rb)).convert("RGB")
+                        
+                        _final_img = _pil
+                        # If a secondary image is uploaded, combine them side-by-side for the VLM
+                        if _img_secondary is not None and len(_pc) > 1:
+                            _rb2 = _img_secondary.read(); _img_secondary.seek(0)
+                            _pil2 = Image.open(io.BytesIO(_rb2)).convert("RGB")
+                            
+                            # Combine side-by-side
+                            _w1, _h1 = _pil.size
+                            _w2, _h2 = _pil2.size
+                            _new_w = _w1 + _w2
+                            _new_h = max(_h1, _h2)
+                            _combined = Image.new('RGB', (_new_w, _new_h))
+                            _combined.paste(_pil, (0, 0))
+                            _combined.paste(_pil2, (_w1, 0))
+                            _final_img = _combined
+                        
+                        _metrics, _ = math_engine.analyze(_pil)
+                        _tag = "[CROSS-MODAL]" if "Cross" in _upload_mode else ("[BI-TEMPORAL CHANGE DETECTION]" if "Bi" in _upload_mode else "")
+                        _fq = f"{_tag} {_uq}".strip()
+                        _stream = vision_agent.generate_intelligence_report_stream(
+                            image_input=_final_img, metrics=_metrics, user_query=_fq, region_name="Uploaded AOI"
+                        )
+                        _ft = _rph.write_stream(_stream)
+                        if _ft:
+                            st.session_state["chat_messages"].append({"role": "assistant", "content": _ft})
+                        else:
+                            st.info("Analysis completed.")
+                    except Exception as _ex:
+                        st.error(f"Analysis failed: {_ex}")
+
+    st.stop()  # Prevent disaster dashboard from rendering in AI mode
+
+# ================================================================================
+# TACTICAL DISASTER DASHBOARD — continues below (disaster mode only)
+# ================================================================================
 
 # Real-Time Telemetry Top Header Banner
 now_utc = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
@@ -3000,18 +3172,57 @@ with tab11:
     
     st.code(sms_text, language="text")
     
+    target_number = st.text_input("Target Phone Number (e.g. +919876543210)", value="", help="Leave blank to run simulation. Enter a valid number to send a real SMS via Twilio.")
+
     if st.button("🚀 Broadcast SMS to Regional Cell Towers", use_container_width=True):
-        import time
-        msg_placeholder = st.empty()
-        progress_bar = st.progress(0)
-        
-        target_phones = int(total_km2 * 125) if 'total_km2' in locals() and total_km2 else 15000
-        for i in range(101):
-            progress_bar.progress(i)
-            sent_count = int((i / 100.0) * target_phones)
-            msg_placeholder.success(f"Transmitting... Delivered to {sent_count:,} / {target_phones:,} mobile devices.")
-            time.sleep(0.02)
+        if target_number.strip():
+            # Send Real SMS via Twilio
+            msg_placeholder = st.empty()
+            msg_placeholder.info("Sending real SMS via Twilio...")
+            try:
+                import os
+                from twilio.rest import Client
+                # Try to get credentials from Streamlit secrets, then environment variables
+                sid = os.environ.get("TWILIO_ACCOUNT_SID")
+                token = os.environ.get("TWILIO_AUTH_TOKEN")
+                from_num = os.environ.get("TWILIO_FROM_NUMBER")
+                
+                try:
+                    if hasattr(st, "secrets") and "TWILIO_ACCOUNT_SID" in st.secrets:
+                        sid = st.secrets["TWILIO_ACCOUNT_SID"]
+                        token = st.secrets["TWILIO_AUTH_TOKEN"]
+                        from_num = st.secrets["TWILIO_FROM_NUMBER"]
+                except Exception:
+                    pass
+
+                if not sid or not token or not from_num:
+                    st.error("Twilio credentials not found! Please configure TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, and TWILIO_FROM_NUMBER in .streamlit/secrets.toml or as environment variables.")
+                else:
+                    client = Client(sid, token)
+                    message = client.messages.create(
+                        body=sms_text,
+                        from_=from_num,
+                        to=target_number.strip()
+                    )
+                    msg_placeholder.success(f"SMS Successfully Sent to {target_number.strip()}! (Message SID: {message.sid})")
+                    st.balloons()
+            except ImportError:
+                st.error("Twilio package is not installed. Please run: pip install twilio")
+            except Exception as e:
+                st.error(f"Failed to send SMS: {e}")
+        else:
+            # Run Simulation
+            import time
+            msg_placeholder = st.empty()
+            progress_bar = st.progress(0)
             
-        st.balloons()
-        
+            target_phones = int(total_km2 * 125) if 'total_km2' in locals() and total_km2 else 15000
+            for i in range(101):
+                progress_bar.progress(i)
+                sent_count = int((i / 100.0) * target_phones)
+                msg_placeholder.success(f"Transmitting (SIMULATION)... Delivered to {sent_count:,} / {target_phones:,} mobile devices.")
+                time.sleep(0.02)
+                
+            st.balloons()
+            
     st.markdown("</div>", unsafe_allow_html=True)
